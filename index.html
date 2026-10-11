@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BRICOHAMS QUANSHENG STUDIO 2.0 · Panel de control</title>
+<title>BRICOHAMS QUANSHENG STUDIO 2.3 · Conexión corregida</title>
 <style>
 :root{color-scheme:dark;--bg:#0b101b;--panel:#151d2e;--panel2:#1c2639;--border:#2c3b50;--fg:#eaf2ff;--muted:#94a8c3;--aqua:#36dec1;--blue:#8bb9ff;--warn:#ffc46c;--danger:#ff8d9d;--shadow:0 16px 55px #03070d60}
 *{box-sizing:border-box}body{background:radial-gradient(ellipse at 78% -13%,#183958 0,transparent 39%),var(--bg);color:var(--fg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;margin:0}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:not-allowed}.layout{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;background:#111928c9;border-right:1px solid var(--border);padding:29px 17px;display:flex;flex-direction:column;gap:23px}.logo{display:flex;flex-direction:column;gap:10px;align-items:flex-start;padding:4px 9px;width:100%}.brandlogo{display:block;width:176px;max-width:100%;height:auto;border-radius:12px;box-shadow:0 10px 25px #00000035}.logotext{display:flex;flex-direction:column;gap:4px;width:100%}.logotop{font-weight:800;font-size:18px;letter-spacing:-.4px;line-height:1.1}.logosub{color:var(--muted);font-size:11px;letter-spacing:.8px;line-height:1.35;white-space:normal;word-break:break-word}.nav{display:grid;gap:7px}.nav button{background:none;border:1px solid transparent;border-radius:12px;text-align:left;padding:12px 13px;color:#aec0da;display:flex;align-items:center;gap:12px}.nav button.active{background:#1b3344;border-color:#2b636e;color:#9affeb}.nav button:hover:not(.active){background:#1e293a}.sidefoot{margin-top:auto;border-top:1px solid var(--border);padding:18px 8px 0;color:var(--muted);font-size:12px;line-height:1.7}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#75829a;margin-right:6px}.dot.ok{background:var(--aqua)}main{min-width:0;max-width:1720px;padding:34px clamp(20px,3.8vw,60px);width:100%}.eyebrow{font-size:11px;color:var(--aqua);text-transform:uppercase;letter-spacing:2px;font-weight:800}h1{font-size:clamp(28px,3vw,42px);line-height:1.12;letter-spacing:-1.3px;margin:10px 0}h2{margin:0;font-size:18px}h3{margin:0 0 10px;font-size:15px}p{line-height:1.62;color:#afbfda}.lead{margin:0 0 24px;max-width:850px}.top{display:flex;align-items:start;justify-content:space-between;gap:20px;flex-wrap:wrap}.chip{border:1px solid #3d626b;background:#1c3944;border-radius:25px;color:#91eee0;padding:8px 12px;font-size:12px;white-space:nowrap}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0}.stat{background:linear-gradient(155deg,#192539,#131b2a);border:1px solid var(--border);padding:20px;border-radius:17px}.stat strong{display:block;font-size:28px;letter-spacing:-1px;margin:4px 0}.small{font-size:12px;color:var(--muted)}.panel{background:#151e2dbf;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:21px;margin:18px 0}.flex{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.spacer{flex:1}.btn{background:#233247;border:1px solid #3b516c;color:#eaf2ff;border-radius:10px;padding:10px 15px;white-space:nowrap;font-weight:650;font-size:13px}.btn:hover:not(:disabled){background:#30415a}.btn.primary{background:#2ce1c2;border-color:#2ce1c2;color:#09221f}.btn.primary:hover{background:#7df0dd}.btn.danger{border-color:#65414c;color:#ffa9b5}.btn.ghost{background:transparent}.btn.sm{padding:6px 9px;font-size:12px}.toolbar{margin-top:17px}.field,select{background:#0e1725;color:var(--fg);border:1px solid #37495f;border-radius:9px;padding:10px 11px;min-width:0}select:focus,.field:focus{outline:2px solid #26bfa9;outline-offset:0}.search{min-width:220px;flex:1}.tablewrap{overflow:auto;max-height:60vh;border:1px solid var(--border);border-radius:11px;margin-top:16px}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:13px}thead{position:sticky;top:0;background:#1f2e43;z-index:1}th{text-transform:uppercase;font-size:10px;letter-spacing:1px;color:#b4c9e2;font-weight:800;text-align:left}th,td{padding:12px 13px;border-bottom:1px solid #29384c}tbody tr:hover{background:#202d40}td.freq{font-variant-numeric:tabular-nums;color:#dcf3ff;font-weight:650}td.off{color:#e6a4af}td .edit{padding:5px 8px}.badge{display:inline-flex;border-radius:20px;padding:4px 8px;background:#253747;color:#c0eaff;font-size:11px}.badge.rx{background:#3c2635;color:#ffbcc7}.empty{text-align:center;padding:42px 12px;color:#a9bed7}.empty strong{color:#e8f4ff;display:block;margin:0 0 10px}.notice{padding:13px 16px;border:1px solid #685438;background:#302a22;border-radius:12px;color:#ffdaac;font-size:13px;line-height:1.5;margin:16px 0}.notice.info{border-color:#365c6f;background:#182d40;color:#bdddf1}.notice.ok{border-color:#236859;background:#173a36;color:#b1f2df}label{color:#bacbe3;font-size:12px;font-weight:650}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:18px 0}.formgrid label{display:grid;gap:6px}.formgrid input,.formgrid select{width:100%}.panel p:first-child{margin-top:0}.muted{color:var(--muted)}.rowbetween{display:flex;justify-content:space-between;align-items:center;gap:12px}.hidden{display:none!important}.tabscontent>section{display:none}.tabscontent>section.active{display:block}.radio-status{display:flex;align-items:center;gap:15px;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:18px}.radio-status strong{font-weight:700}progress{width:100%;height:10px;accent-color:var(--aqua)}pre.log{height:215px;overflow:auto;background:#08111e;border:1px solid #294056;border-radius:10px;padding:14px;white-space:pre-wrap;font-size:12px;color:#b7e3d9;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;line-height:1.5}.check{display:flex;align-items:center;gap:10px;color:#d5e2f4;font-size:13px}.check input{accent-color:var(--aqua);width:17px;height:17px}dialog{border:1px solid #45566e;border-radius:18px;padding:0;box-shadow:0 35px 120px #000a;background:#161f2f;color:var(--fg);width:min(750px,calc(100vw - 24px));max-height:90vh;overflow:auto}dialog::backdrop{background:#010812d9}.modalhead{padding:22px 24px 10px;display:flex;justify-content:space-between;align-items:center}.modalbody{padding:0 24px 24px}.modalfoot{border-top:1px solid var(--border);padding:16px 24px;display:flex;justify-content:flex-end;gap:10px}.hint{font-size:12px;color:#9fb1c7}.col2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.labeltop{font-size:12px;color:#adc7d9;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin:20px 0 8px}.kbd{font-family:monospace;background:#1d3144;padding:2px 6px;border-radius:5px;color:#cce8ff}.footer{color:#7890ac;font-size:12px;margin:36px 0}a{color:#97d5ff}a:hover{color:white}input[type=file]{display:none}@media(max-width:950px){.layout{grid-template-columns:1fr}.side{position:static;height:auto;padding:14px 18px;gap:12px}.nav{display:flex;flex-wrap:wrap}.nav button{padding:9px}.sidefoot{display:none}main{padding:23px 16px}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:580px){.stats{grid-template-columns:1fr}.formgrid,.col2{grid-template-columns:1fr}.side .logo{padding:0}.nav{gap:4px}.nav button{font-size:12px}.panel{padding:15px}.btn{font-size:12px}} 
@@ -169,6 +169,14 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 @media(max-width:680px){.side .nav{overflow-x:auto;white-space:nowrap}.side .nav button{max-width:none}.ui-extra-box summary{overflow-wrap:anywhere}#tab-memorias .tablewrap{max-width:100%}}
 
 </style>
+<style>
+.bk-flash-table .bk-erase-slot{padding:7px 10px;font-size:12px;border:1px solid #b96565;color:#ffc1c1;background:#432733;white-space:nowrap;min-width:96px}
+.bk-flash-table .bk-erase-slot:not(:disabled):hover{background:#713643}
+.bk-flash-table .bk-erase-slot:disabled{opacity:.35;cursor:not-allowed}
+.bk-flash-table .bkState[data-state="empty"]{color:#94a8c3}
+.bk-flash-table .bkState[data-state="valid"]{color:#36dec1}
+.bk-flash-table td{vertical-align:middle}
+</style>
 </head>
 <body>
 <div class="layout">
@@ -281,15 +289,15 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 </div>
 <div class="panel"><h2>Registro de operaciones Flash</h2><progress id="bkFlashProgress" max="100" value="0"></progress><p class="small" id="bkFlashStatus">Sin iniciar</p><pre class="log" id="bkFlashLog" style="height:180px">BRICOHAMS · Flash listo. Las escrituras requieren confirmación expresa.
 </pre></div></section>
-<section id="tab-multiboot"><div class="panel"><div class="rowbetween"><div><h2>2 · Multiboot — Slots 1–4</h2><p class="small">Gestiona los cuatro slots del Multiboot con el walkie encendido normalmente. Primero conecta y lee el equipo desde la <b>barra superior</b>.</p></div><span class="badge">Slots 1–4 · M protegido</span></div><div class="notice info">ARDF 6.0 y STABLE 6.1 están incrustados en el HTML. No hace falta autorizar carpetas. El slot M está protegido y no puede sobrescribirse desde aquí.</div></div>
+<section id="tab-multiboot"><div class="panel"><div class="rowbetween"><div><h2>2 · Multiboot — Slots 1–4 · V2.1</h2><p class="small">Gestiona los cuatro slots del Multiboot con el walkie encendido normalmente. Primero conecta y lee el equipo desde la <b>barra superior</b>.</p></div><span class="badge">Slots 1–4 · M protegido</span></div><div class="notice info">ARDF 6.0 y STABLE 6.1 están incrustados en el HTML. No hace falta autorizar carpetas. El slot M está protegido y no puede sobrescribirse desde aquí.</div></div>
 <div class="panel">
-<div class="rowbetween"><div><h2>Gestión de slots 1–4</h2><p class="small">Instala F4HWN 6.x con soporte Multiboot en memoria Flash externa. El firmware en ejecución no cambia hasta que elijas un slot al arrancar.</p></div><button class="btn" id="bkRefreshSlots">↻ Leer slots del walkie</button></div>
-<div style="overflow-x:auto;margin-top:15px"><table class="tbl bk-flash-table"><thead><tr><th>Slot</th><th>Edición</th><th>Versión</th><th>Tamaño</th><th>Estado</th></tr></thead><tbody>
-<tr><td><b>M</b></td><td>Principal protegido</td><td>—</td><td>—</td><td>Mantenido por firmware</td></tr>
-<tr id="bkSlotRow1"><td>1</td><td class="bkName">—</td><td class="bkVer">—</td><td class="bkSize">—</td><td class="bkState">Sin leer</td></tr>
-<tr id="bkSlotRow2"><td>2</td><td class="bkName">—</td><td class="bkVer">—</td><td class="bkSize">—</td><td class="bkState">Sin leer</td></tr>
-<tr id="bkSlotRow3"><td>3</td><td class="bkName">—</td><td class="bkVer">—</td><td class="bkSize">—</td><td class="bkState">Sin leer</td></tr>
-<tr id="bkSlotRow4"><td>4</td><td class="bkName">—</td><td class="bkVer">—</td><td class="bkSize">—</td><td class="bkState">Sin leer</td></tr>
+<div class="rowbetween"><div><h2>Gestión de slots 1–4</h2><p class="small">Instala F4HWN 6.x con soporte Multiboot en memoria Flash externa. El firmware en ejecución no cambia hasta que elijas un slot al arrancar.</p></div><div class="flex" style="gap:8px;flex-wrap:wrap"><button class="btn" id="bkRefreshSlots">↻ Leer slots del walkie</button><button class="btn" id="bkExportFlashLog" type="button">↓ Guardar registro Flash</button></div></div>
+<div style="overflow-x:auto;margin-top:15px"><table class="tbl bk-flash-table"><thead><tr><th>Slot</th><th>Edición</th><th>Versión</th><th>Tamaño</th><th>Estado</th><th>Acción</th></tr></thead><tbody>
+<tr><td><b>M</b></td><td>Principal protegido</td><td>—</td><td>—</td><td>Mantenido por firmware</td><td><span class="small">Protegido</span></td></tr>
+<tr id="bkSlotRow1"><td>1</td><td class="bkName">—</td><td class="bkVer">—</td><td class="bkSize">—</td><td class="bkState">Sin leer</td><td><button id="bkEraseSlot1" class="btn bk-erase-slot" type="button" title="Borra únicamente el firmware del slot 1, nunca su configuración" disabled>Borrar slot</button></td></tr>
+<tr id="bkSlotRow2"><td>2</td><td class="bkName">—</td><td class="bkVer">—</td><td class="bkSize">—</td><td class="bkState">Sin leer</td><td><button id="bkEraseSlot2" class="btn bk-erase-slot" type="button" title="Borra únicamente el firmware del slot 2, nunca su configuración" disabled>Borrar slot</button></td></tr>
+<tr id="bkSlotRow3"><td>3</td><td class="bkName">—</td><td class="bkVer">—</td><td class="bkSize">—</td><td class="bkState">Sin leer</td><td><button id="bkEraseSlot3" class="btn bk-erase-slot" type="button" title="Borra únicamente el firmware del slot 3, nunca su configuración" disabled>Borrar slot</button></td></tr>
+<tr id="bkSlotRow4"><td>4</td><td class="bkName">—</td><td class="bkVer">—</td><td class="bkSize">—</td><td class="bkState">Sin leer</td><td><button id="bkEraseSlot4" class="btn bk-erase-slot" type="button" title="Borra únicamente el firmware del slot 4, nunca su configuración" disabled>Borrar slot</button></td></tr>
 </tbody></table></div>
 <div class="bk-flash-grid">
 <label class="bk-field">Firmware para Multiboot<select class="bk-source-select" id="bkSlotSource"><option value="stable.bin">STABLE · integrado (F4HWN 6.1.0)</option><option value="ardf.bin">ARDF · integrado (F4HWN 6.0.0)</option><option value="manual">Otro BIN · seleccionar archivo</option></select><span class="bk-file-pick bk-hidden" id="bkSlotCustomWrap"><input accept=".bin,application/octet-stream" id="bkSlotFile" type="file"/></span><small id="bkSlotFileInfo">Selecciona STABLE, ARDF u Otro BIN. Solo firmware F4HWN 6.0/6.1 compatible con Multiboot (118 KiB máx.).</small></label>
@@ -307,8 +315,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
   <div class="panel">
    <div class="rowbetween"><div><h2>⚙ Configuración del Quansheng</h2><p class="small">Los ajustes se obtienen de la memoria real de tu walkie, no de una plantilla. Se editan sin modificar los canales. Compatible con F4HWN Fusion 6.0.0 y 6.1.0.</p></div><span class="badge" id="cfgBadge">Sin lectura</span></div>
    <div class="notice info" style="margin-top:14px"><b>Nuevo:</b> <b>ChDisp</b> permite mostrar <b>Frecuencia / Número / Nombre / Nombre + frecuencia</b> en modo memoria. <b>RP-STE</b> controla la eliminación de cola de repetidor (apagado o 100–1.000 ms), aparte del STE normal. Estos ajustes aparecen al leer el walkie. Ahora también hay botones, listas de exploración, DTMF, FM y ajustes avanzados.</div>
-   <div class="notice info" id="cfgNotice">1. Conecta desde la barra superior y pulsa «Leer del walkie» para actualizar los ajustes sin salir de esta pantalla. 2. En modo normal se guarda el BIN antes de escribir; en Modo PRO es opcional. 3. Edita y guarda solo cuando quieras.</div>
-   <div class="flex"><button class="btn primary" type="button" id="cfgReadFromRadio" disabled title="Conecta el walkie desde la barra superior">↻ Leer del walkie</button><button class="btn" id="cfgGoRadio">⌁ Ir a Backup</button><button class="btn" id="cfgReload" disabled>↻ Descartar cambios</button><button class="btn" id="cfgExport" disabled>↓ Exportar ajustes JSON</button><button class="btn primary" id="cfgWrite" disabled>⇧ Guardar ajustes en la radio</button></div>
+   <div class="notice info" id="cfgNotice">1. Conecta desde la barra superior y pulsa «Leer del walkie» para actualizar los ajustes sin salir de esta pantalla. 2. En modo normal se guarda el BIN manualmente en 0 · Backup antes de escribir; en Modo PRO es opcional. 3. Lee, edita y guarda solo cuando quieras.</div>
+   <div class="flex"><button class="btn primary" type="button" id="cfgReadFromRadio" disabled title="Conecta el walkie desde la barra superior">↻ Leer configuración</button><button class="btn" id="cfgGoRadio">⌁ Ir a Backup</button><button class="btn" id="cfgReload" disabled>↻ Descartar cambios</button><button class="btn" id="cfgExport" disabled>↓ Exportar ajustes JSON</button><button class="btn primary" id="cfgWrite" disabled>⇧ Guardar ajustes en la radio</button></div>
    <div class="small" id="cfgReadFromRadioStatus" role="status" style="margin-top:9px">Conecta desde la barra superior para leer los ajustes del walkie.</div>
   </div>
   <div class="panel"><div class="rowbetween"><div><h2>Explorar todos los ajustes</h2><p class="small">Busca por nombre, abre una sección y edita únicamente lo que quieras cambiar. Las opciones incompatibles con tu versión se ocultan.</p></div><span class="badge" id="cfgCount">—</span></div><input class="field" id="cfgSearch" placeholder="Buscar: scan, DTMF, iluminación, tecla, repetidor…" autocomplete="off" style="width:100%;margin-top:10px"/><div class="flex" style="margin-top:10px"><button class="btn" id="cfgExpand">Expandir secciones</button><button class="btn" id="cfgCollapse">Contraer secciones</button></div></div>
@@ -603,21 +611,23 @@ const FULL_SIZE=0xB190,BLOCK_SIZE=0x80,NUM_RADIO_CHANNELS=1024;
 const CHAN_SIZE=16,CHAN_START=0x0000,NAME_START=0x4000,ATTR_START=0x8000;
 const VERSION_PROFILE={'6.0.0':{maxWrite:0xA171},'6.1.0':{maxWrite:0xA178}};
 let usbPort=null,usbReader=null,usbWriter=null,usbCache=[],usbFirmware='',usbVersion='',usbBusy=false,usbDead=false;
+let usbCloseInFlight=null;
+function usbConnected(){return !!(usbPort&&!usbDead&&usbReader&&usbWriter)}
 let usbSnapshot=null,usbSnapshotVersion='',usbBackupSaved=false,usbBackupDiskSaved=false,usbBackupCount=0;
 let proMode=false; // siempre empieza desactivado; no se guarda en cookies ni en localStorage
 function usbCRC(bytes){let crc=0;for(const b of bytes){crc^=b<<8;for(let i=0;i<8;i++)crc=crc&0x8000?((crc<<1)^0x1021)&0xffff:(crc<<1)&0xffff}return crc}
 function usbXor(bytes){return Uint8Array.from(bytes,(x,i)=>x^USB_XOR_KEY[i%USB_XOR_KEY.length])}
-async function usbSend(payload){if(!usbWriter||usbDead)throw Error('Puerto USB no disponible');let crc=usbCRC(payload),buf=new Uint8Array(payload.length+2);buf.set(payload);buf.set([crc&255,(crc>>8)&255],payload.length);let packet=new Uint8Array(payload.length+8);packet.set([0xab,0xcd,payload.length,0]);packet.set(usbXor(buf),4);packet.set([0xdc,0xba],packet.length-2);await usbWriter.write(packet)}
-async function usbExact(count,timeoutMs=6000){while(usbCache.length<count){let timeoutId;try{let ans=await Promise.race([usbReader.read(),new Promise((_,rej)=>{timeoutId=setTimeout(()=>rej(Error('No responde el puerto. Comprueba el cable y reinicia la conexión.')),timeoutMs)})]);if(ans.done)throw Error('Conexión USB cerrada');usbCache.push(...ans.value)}catch(e){usbDead=true;throw e}finally{clearTimeout(timeoutId)}}return Uint8Array.from(usbCache.splice(0,count))}
+async function usbSend(payload){if(!usbWriter||usbDead)throw Error('Puerto USB no disponible');let crc=usbCRC(payload),buf=new Uint8Array(payload.length+2);buf.set(payload);buf.set([crc&255,(crc>>8)&255],payload.length);let packet=new Uint8Array(payload.length+8);packet.set([0xab,0xcd,payload.length,0]);packet.set(usbXor(buf),4);packet.set([0xdc,0xba],packet.length-2);try{await usbWriter.write(packet)}catch(e){usbDead=true;usbRender();throw e}}
+async function usbExact(count,timeoutMs=6000){while(usbCache.length<count){let timeoutId;try{let ans=await Promise.race([usbReader.read(),new Promise((_,rej)=>{timeoutId=setTimeout(()=>rej(Error('No responde el puerto. Comprueba el cable y reinicia la conexión.')),timeoutMs)})]);if(ans.done)throw Error('Conexión USB cerrada');usbCache.push(...ans.value)}catch(e){usbDead=true;usbRender();throw e}finally{clearTimeout(timeoutId)}}return Uint8Array.from(usbCache.splice(0,count))}
 async function usbReceive(timeoutMs=6000){const header=await usbExact(4,timeoutMs);if(header[0]!==0xab||header[1]!==0xcd||header[3]!==0)throw Error('Cabecera incorrecta; comprueba que elegiste el walkie');const n=header[2];const raw=await usbExact(n,timeoutMs);const end=await usbExact(4,timeoutMs);if(end[2]!==0xdc||end[3]!==0xba)throw Error('Trama USB incorrecta');return usbXor(raw)}
 async function usbExchange(cmd,timeoutMs=6000){await usbSend(cmd);return await usbReceive(timeoutMs)}
 function usbReadAscii(bytes){let result='';for(let i=4;i<Math.min(bytes.length,25);i++){let v=bytes[i];if(v<32||v>126)break;result+=String.fromCharCode(v)}return result.trim()}
 function usbClassify(str){const t=str.trim();const version=/(?:^|[^0-9])v?6[._ ](0|1)[._ ]0(?![0-9.])/i.exec(t);if(!version)return '';if(!/F4HWN|FUSION/i.test(t))return '';return version[1]==='0'?'6.0.0':'6.1.0'}
 async function usbIdentify(){const rep=await usbExchange(Uint8Array.from([0x14,0x05,0x04,0x00,0x6a,0x39,0x57,0x64]));if(rep[0]===0x18&&rep[1]===0x05)throw Error('Radio en modo actualización. Reinicia sin pulsar PTT.');if(rep[0]!==0x15||rep[1]!==0x05)throw Error('Respuesta al saludo no válida');const fw=usbReadAscii(rep);if(!fw)throw Error('La radio no ha proporcionado una versión');return fw}
 function dropSnapshot(){cfgReset();usbSnapshot=null;usbSnapshotVersion='';usbBackupSaved=false;usbBackupDiskSaved=false;radioRows.clear();}
-function usbRender(){let connected=!!usbPort,verified=!!usbVersion;
+function usbRender(){let connected=usbConnected(),verified=connected&&!!usbVersion;
 $('#usbConnStatus').textContent=connected?'Puerto conectado'+(verified?' · '+usbVersion:' · versión no verificada'):'Sin conexión';
-$('#usbRawFirmware').textContent=usbFirmware||'Sin identificar';$('#usbDetectedVersion').textContent=verified?'Fusion '+usbVersion:(connected?'No identificada':'Pendiente');
+$('#usbRawFirmware').textContent=connected?(usbFirmware||'Sin identificar'):'Sin identificar';$('#usbDetectedVersion').textContent=verified?'Fusion '+usbVersion:(connected?'No identificada':'Pendiente');
 $('#usbVerified').textContent=verified?(usbSnapshot?(usbBackupSaved?(usbBackupDiskSaved?'Canales leídos · copia BIN guardada':'Canales leídos · Modo PRO'):'Canales leídos · guardar BIN antes de escribir'):'Firmware identificado · iniciando lectura'):connected?'Versión sin verificar':'Conecta el walkie';
 $('#usbConnect').disabled=connected||usbBusy;$('#usbDisconnect').disabled=!connected||usbBusy;$('#usbRedetect').disabled=!connected||usbBusy||usbDead;
 $('#usbReadDiagnostic').disabled=!connected||!verified||usbBusy||usbDead;
@@ -625,7 +635,7 @@ $('#usbReadDiagnostic').disabled=!connected||!verified||usbBusy||usbDead;
 for(const btnId of ['cfgReadFromRadio','channelsReadFromRadio']){
  const readBtn=$('#'+btnId);
  readBtn.disabled=!connected||!verified||usbBusy||usbDead;
- readBtn.title=readBtn.disabled?'Conecta el walkie desde la barra superior para poder leer.':'Volver a leer la memoria del walkie y actualizar esta pantalla.';
+ readBtn.title=readBtn.disabled?'Conecta el walkie desde la barra superior para poder leer.':'Leer datos del walkie sin descargar automáticamente ningún BIN.';
 }
 $('#usbReadDiagnostic').textContent=proMode?'↻ Leer memoria (sin guardar BIN)':'↓ Leer radio y guardar copia completa';
 $('#usbSaveBackup').disabled=!usbSnapshot||usbBusy||!usbVersion;
@@ -639,9 +649,38 @@ $('#profile').disabled=connected&&verified;
 $('#usbConnDot').classList.toggle('ok',verified);$('#usbSideDot').classList.toggle('ok',verified);$('#usbSideStatus').textContent=verified?'Firmware Fusion '+usbVersion:connected?'USB: sin identificar':'Puerto USB desconectado';
  actualizarCopiasEspeciales();
 }
-async function usbClose(){usbDead=true;dropSnapshot();try{if(usbReader){await usbReader.cancel();usbReader.releaseLock()}}catch{}usbReader=null;try{if(usbWriter)usbWriter.releaseLock()}catch{}usbWriter=null;try{if(usbPort)await usbPort.close()}catch{}usbPort=null;usbCache=[];usbFirmware='';usbVersion='';usbRender()}
-async function usbSafely(action){if(usbBusy)return;usbBusy=true;usbRender();try{await action()}catch(e){log('USB · ERROR: '+e.message);alert('Conexión USB: '+e.message)}finally{usbBusy=false;usbRender()}}
+async function usbClose(){
+ // Marcar desconectado ANTES de esperar al cierre físico del puerto.
+ // Así el botón global no muestra "Conectado" durante un reinicio.
+ if(usbCloseInFlight)return usbCloseInFlight;
+ const oldPort=usbPort,oldReader=usbReader,oldWriter=usbWriter;
+ usbDead=true;usbPort=null;usbReader=null;usbWriter=null;
+ usbCache=[];usbFirmware='';usbVersion='';dropSnapshot();usbRender();
+ usbCloseInFlight=(async()=>{
+  try{if(oldReader){await oldReader.cancel();oldReader.releaseLock()}}catch{}
+  try{oldWriter?.releaseLock()}catch{}
+  try{if(oldPort)await oldPort.close()}catch{}
+  usbRender();
+ })().finally(()=>{usbCloseInFlight=null});
+ return usbCloseInFlight;
+}
+// Web Serial informa de desconexiones físicas; no confundirlas con el modo DFU.
+if('serial' in navigator&&navigator.serial.addEventListener){
+ navigator.serial.addEventListener('disconnect',event=>{
+  if(usbPort&&event.port===usbPort){
+   log('Puerto USB desconectado por el sistema o por reinicio de la radio.');
+   $('#usbProgressText').textContent='Conexión perdida. Vuelve a conectar si no se recupera automáticamente.';
+   void usbClose();
+  }
+ });
+}
+
+async function usbSafely(action){if(usbBusy)return;usbBusy=true;usbRender();try{await action()}catch(e){
+ if(usbDead){await usbClose();log('Conexión USB perdida; puerto liberado para conectar de nuevo.');}
+ log('USB · ERROR: '+e.message);alert('Conexión USB: '+e.message)
+}finally{usbBusy=false;usbRender()}}
 $('#usbConnect').onclick=()=>usbSafely(async()=>{if(!('serial' in navigator))throw Error('Tu navegador no dispone de Web Serial. Usa Chrome/Edge y, si file:// lo bloquea, abre el HTML desde http://localhost.');
+if(usbPort||usbCloseInFlight)await usbClose(); // Libera la sesión anterior, incluso si quedó inaccesible.
 let port=await navigator.serial.requestPort();try{await port.open({baudRate:38400,dataBits:8,stopBits:1,parity:'none',flowControl:'none'});
 usbPort=port;usbReader=port.readable.getReader();usbWriter=port.writable.getWriter();usbCache=[];usbDead=false;dropSnapshot();
 usbFirmware=await usbIdentify();usbVersion=usbClassify(usbFirmware);
@@ -779,7 +818,7 @@ async function leerDesdePestana(kind){
   const statusId=kind==='config'?'cfgReadFromRadioStatus':'channelsReadFromRadioStatus';
   const status=$('#'+statusId);
   status.textContent='Leyendo la memoria del walkie…';
-  let replaced;try{replaced=await usbAcquireSnapshot(!proMode,kind==='channels')}catch(e){status.textContent='Error durante la lectura: '+e.message;throw e}
+  let replaced;try{replaced=await usbAcquireSnapshot(false,kind==='channels')}catch(e){status.textContent='Error durante la lectura: '+e.message;throw e}
   if(kind==='config'){
    status.textContent=cfgInitial?'Configuración actualizada desde el walkie: '+Object.keys(cfgInitial).length+' ajustes de Fusion '+usbVersion+'.':'Lectura terminada. No se han podido mostrar los ajustes; comprueba el respaldo BIN.';
    showTab('config');
@@ -1107,7 +1146,7 @@ function cfgInput(spec,value){
  input.addEventListener('input',cfgRenderStatus);return input;
 }
 function cfgLoadFromSnapshot(){
- if(!usbSnapshot||!usbBackupSaved)return;
+ if(!usbSnapshot)return;
  cfgInitial={};const sections=new Map();
  for(const spec of CFG_SPECS){if(!cfgApplicable(spec))continue;
   const value=cfgFieldRead(usbSnapshot,spec);cfgInitial[spec.key]=value;
@@ -1225,14 +1264,18 @@ function cfgPlan(snapshot,edits){
  return chunks;
 }
 function cfgRenderStatus(){
- const available=!!(usbSnapshot&&usbBackupSaved&&cfgInitial&&usbVersion&&usbSnapshotVersion===usbVersion);
+ // La lectura y la edición de los ajustes NO requieren descargar un BIN.
+ // Solo la escritura en modo normal continúa exigiendo una copia manual.
+ const available=!!(usbSnapshot&&cfgInitial&&usbVersion&&usbSnapshotVersion===usbVersion);
+ const canWrite=available&&usbBackupSaved;
  let edits=[],issue='';if(available){try{edits=cfgReadEdits()}catch(e){issue=e.message}}
- $('#cfgBadge').textContent=available?(issue?'Revisar datos':edits.length?edits.length+' cambios pendientes':'Configuración leída'):(usbSnapshot?'Leída · requiere BIN':'Sin lectura');
+ $('#cfgBadge').textContent=available?(issue?'Revisar datos':edits.length?edits.length+' cambios pendientes':'Configuración leída'):'Sin lectura';
  $('#cfgBadge').style.color=available&&!issue?'var(--aqua)':'var(--warn)';
- $('#cfgNotice').textContent=available?(issue?'Error: '+issue:edits.length?'Fusion '+usbVersion+'. Pendientes: '+edits.map(e=>e.spec.label).join(', '):'Configuración leída de Fusion '+usbVersion+'. Edita los ajustes que quieras; los marcados con 🔒 son de solo lectura.'):(usbSnapshot?'Configuración leída. Para modificarla en modo normal, guarda primero un BIN en «Conexión».':'Conecta el walkie: canales y ajustes se leerán automáticamente.');
+ $('#cfgNotice').textContent=!available?'Conecta el walkie: canales y ajustes se leerán automáticamente.':issue?'Error: '+issue:edits.length?'Fusion '+usbVersion+'. Pendientes: '+edits.map(e=>e.spec.label).join(', ')+(canWrite?'':' · Antes de escribir en modo normal, descarga un BIN en 0 · Backup.'):'Configuración leída de Fusion '+usbVersion+'. Puedes editar o exportar sin generar una copia. '+(canWrite?'':'Para escribir en modo normal, descarga antes un BIN en 0 · Backup.');
  $('#cfgReload').disabled=!available||usbBusy||!edits.length;
  $('#cfgExport').disabled=!available||usbBusy;
- $('#cfgWrite').disabled=!available||usbBusy||usbDead||!!issue||!edits.length;
+ $('#cfgWrite').disabled=!canWrite||usbBusy||usbDead||!!issue||!edits.length;
+ $('#cfgWrite').title=!available?'Lee la configuración del walkie.':!usbBackupSaved?'En modo normal, guarda primero un BIN desde 0 · Backup.':'Guardar ajustes en el walkie.';
  $('#cfgWrite').textContent=edits.length?'⇧ Guardar '+edits.length+' ajustes (experimental)':'⇧ Guardar ajustes en la radio';
 }
 
@@ -1254,9 +1297,13 @@ $('#cfgWrite').onclick=()=>usbSafely(async()=>{
  $('#usbProgress').value=Math.round(count/chunks.length*100);$('#usbProgressText').textContent='Configuración verificada: '+count+'/'+chunks.length;}
  log('CONFIGURACIÓN verificada: '+edits.map(x=>x.spec.key).join(', '));
  try{await usbSend(Uint8Array.from([0xdd,0x05,0,0]))}catch(e){log('Reinicio no confirmado: '+e.message)}
- alert('Se han escrito y releído los bloques de configuración. Comprueba los ajustes en el walkie y conéctalo de nuevo.');
+ // El reinicio invalida la sesión serie aunque el cable USB permanezca visible.
+ await usbClose();
+ $('#usbProgressText').textContent='Configuración grabada y verificada. Radio reiniciada: desconectado; puedes volver a conectar.';
+ log('Configuración: sesión USB liberada tras reiniciar el equipo. Botón Conectar disponible.');
+ alert('Se han escrito y releído los bloques de configuración. El puerto ya aparece desconectado; vuelve a conectar para leer los ajustes tras el reinicio.');
  }catch(e){log('CONFIGURACIÓN PARCIAL: '+count+'/'+chunks.length+' bloques. '+e.message);alert('Fallo de escritura. Se escribieron '+count+' bloques antes del error. Conserva el BIN original.');throw e}
- finally{dropSnapshot();$('#usbProgressText').textContent='Tras la grabación, vuelve a conectar y leer la radio para continuar.';usbRender()}
+ finally{if(usbDead)await usbClose();dropSnapshot();if(usbPort)await usbClose();usbRender()}
 });
 
 window.addEventListener('beforeunload',e=>{if(usbBusy){e.preventDefault();e.returnValue=''}});
@@ -1269,6 +1316,7 @@ render();
 // No intenta escribir en el slot principal protegido M.
 const BK_SLOT_MAX=0x1D800, BK_SLOT_MAGIC=0x31424d46, BK_SLOT_STAT=['Válido','Vacío','Cabecera nueva','Incompleto','Tamaño inválido','CRC incorrecto','Error de flash','Slot inválido','Autorización denegada'];
 let bkSlotFile=null,bkMainFile=null,bkFlashBusy=false;
+const bkSlotData=new Map(); // Estado de los cuatro slots consultado al equipo; nunca se usa para escrituras sin revalidarlo.
 const bkId=id=>document.getElementById(id);
 const bkPause=ms=>new Promise(r=>setTimeout(r,ms));
 function bkLog(s){const line='['+new Date().toLocaleTimeString()+'] '+s+'\n';for(const id of ['bkFlashLog','bkFlashLogMirror']){const target=bkId(id);if(target){target.textContent+=line;target.scrollTop=target.scrollHeight;}}}
@@ -1276,6 +1324,10 @@ function bkProgress(n,label){const v=Math.max(0,Math.min(100,Math.round(n)));for
 function bkModeStatus(){
  const ready=!!usbPort&&!!usbVersion&&!usbDead&&!usbBusy&&!bkFlashBusy;
  bkId('bkRefreshSlots').disabled=!ready;
+ for(let n=1;n<=4;n++){
+   const action=bkId('bkEraseSlot'+n),info=bkSlotData.get(n);
+   if(action){action.disabled=!ready||!info?.canErase;action.title=info?.canErase?'Borrar solo el firmware del slot '+n+'. Se conservará su banco de configuración.':'Slot vacío, desconocido o no leído: no se puede borrar.';}
+ }
  bkId('bkWriteSlot').disabled=!ready||!bkSlotFile||!bkId('bkSlotConfirm').checked;
  const reasons=[];
  if(!bkMainFile)reasons.push('Selecciona un firmware integrado o carga «Otro BIN».');
@@ -1305,22 +1357,121 @@ function bkHeader(image,meta){const h=new Uint8Array(64),d=new DataView(h.buffer
 async function bkSlotCommand(type,data,expected,timeout=6000){
  if(!usbPort||!usbWriter||usbDead||!usbVersion)throw Error('Primero conecta el walkie encendido normalmente en Conexión.');
  const len=4+data.length;const msg=new Uint8Array(len+(len%2));const dv=new DataView(msg.buffer);dv.setUint16(0,type,true);dv.setUint16(2,data.length,true);msg.set(data,4);
- const rep=await usbExchange(msg,timeout);if(rep.length<4)throw Error('Respuesta incompleta a 0x'+type.toString(16));
- const rd=new DataView(rep.buffer,rep.byteOffset,rep.byteLength);if(rd.getUint16(0,true)!==expected)throw Error('Respuesta inesperada: 0x'+rd.getUint16(0,true).toString(16));
- return rep.slice(4);
+ // UV Studio waits for the expected response while discarding unrelated notifications.
+ // This matters when the running edition sends asynchronous display/telemetry packets.
+ await usbSend(msg);
+ const deadline=Date.now()+timeout;
+ let ignored=0;
+ while(Date.now()<deadline){
+   const rep=await usbReceive(Math.max(150,deadline-Date.now()));
+   if(rep.length<4)throw Error('Respuesta incompleta a 0x'+type.toString(16));
+   const rd=new DataView(rep.buffer,rep.byteOffset,rep.byteLength);
+   const received=rd.getUint16(0,true),declared=rd.getUint16(2,true);
+   if(received!==expected){
+     if(ignored++<4)bkLog('Multiboot: ignorado aviso ajeno 0x'+received.toString(16)+' mientras se esperaba 0x'+expected.toString(16));
+     continue;
+   }
+   if(declared>rep.length-4)throw Error('Longitud incorrecta en respuesta 0x'+expected.toString(16));
+   return rep.slice(4,4+declared);
+ }
+ throw Error('Tiempo agotado esperando 0x'+expected.toString(16));
 }
-async function bkSlotInfo(n){const r=await bkSlotCommand(0x720,Uint8Array.of(n),0x721);if(r.length<2)throw Error('Respuesta de slot incompleta');const status=r[1];let name='',vers='',size=0;if(r.length>=66){const d=r.slice(2);const str=(offset)=>String.fromCharCode(...d.slice(offset,offset+16)).split('\0')[0];name=str(16);vers=str(32);size=new DataView(d.buffer,d.byteOffset,d.byteLength).getUint32(8,true)}return {slot:n,status,name,version:vers,size};}
-async function bkRefreshSlots(){if(bkFlashBusy||usbBusy)return;bkFlashBusy=true;usbBusy=true;usbRender();bkModeStatus();try{bkLog('Consultando los cuatro slots...');for(let n=1;n<=4;n++){const info=await bkSlotInfo(n);const row=bkId('bkSlotRow'+n);row.querySelector('.bkName').textContent=info.name||'—';row.querySelector('.bkVer').textContent=info.version||'—';row.querySelector('.bkSize').textContent=info.size?(info.size/1024).toFixed(1)+' KiB':'—';row.querySelector('.bkState').textContent=BK_SLOT_STAT[info.status]||'Estado '+info.status;row.dataset.status=info.status;bkLog('Slot '+n+': '+(BK_SLOT_STAT[info.status]||info.status));}bkProgress(100,'Slots actualizados');}catch(e){bkLog('ERROR slots: '+e.message);bkProgress(0,'No se pudieron leer los slots');}finally{usbBusy=false;bkFlashBusy=false;usbRender();bkModeStatus();}}
+// El firmware devuelve el estado y una cabecera de 64 bytes.
+// Cuando el sector está borrado puede contener 0xFF; NO convertirlo a texto.
+function bkParseSlotInfo(n,r){
+ if(!r || r.length<2)throw Error('Respuesta de slot incompleta');
+ const status=r[1],header=r.subarray(2,66);
+ const allFF=header.length===64&&header.every(b=>b===0xff);
+ const all00=header.length===64&&header.every(b=>b===0);
+ const erased=allFF||all00;
+ const empty=status===1 || ((status===4||status===2)&&erased);
+ let validHeader=false,name='',version='',size=0;
+ if(header.length===64){
+   const dv=new DataView(header.buffer,header.byteOffset,header.byteLength);
+   const magic=dv.getUint32(0,true),hdrVersion=dv.getUint16(4,true);
+   size=dv.getUint32(8,true);
+   validHeader=magic===BK_SLOT_MAGIC&&hdrVersion===1&&size>0&&size<=BK_SLOT_MAX;
+   if(validHeader&&(status===0||status===5)){
+     const ascii=(pos)=>{
+       let v='';for(let j=pos;j<pos+16;j++){
+         const c=header[j];if(c===0||c===0xff)break;
+         if(c<32||c>126)return '—';
+         v+=String.fromCharCode(c);
+       }return v.trim();
+     };
+     name=ascii(16);version=ascii(32);
+   }
+ }
+ let label=BK_SLOT_STAT[status]||'Estado '+status;
+ if(empty)label=status===1?'Vacío':'Sin firmware (cabecera borrada)';
+ else if(status===0&&!validHeader)label='Cabecera incompatible (revisar)';
+ // Estado de error no equivale automáticamente a firmware instalado.
+ const canErase=!empty&&[0,2,3,4,5].includes(status);
+ return {slot:n,status,name,version,size:validHeader&&(status===0||status===5)?size:0,empty,validHeader,canErase,label};
+}
+async function bkSlotInfo(n){
+ const r=await bkSlotCommand(0x720,Uint8Array.of(n),0x721,3000);
+ return bkParseSlotInfo(n,r);
+}
+function bkRenderSlotInfo(n,info){
+ const row=bkId('bkSlotRow'+n);if(!row)return;
+ row.querySelector('.bkName').textContent=info.name||'—';
+ row.querySelector('.bkVer').textContent=info.version||'—';
+ row.querySelector('.bkSize').textContent=info.size?(info.size/1024).toFixed(1)+' KiB':'—';
+ const state=row.querySelector('.bkState');
+ state.textContent=info.label;state.dataset.state=info.empty?'empty':info.status===0?'valid':'error';
+ row.dataset.status=String(info.status);
+ bkSlotData.set(n,info);
+ bkModeStatus();
+}
+async function bkRefreshSlots(){
+ if(bkFlashBusy||usbBusy)return;
+ bkFlashBusy=true;usbBusy=true;usbRender();bkModeStatus();let errors=0;
+ try{
+  bkLog('Consultando los cuatro slots...');
+  for(let n=1;n<=4;n++){
+    try{const info=await bkSlotInfo(n);bkRenderSlotInfo(n,info);bkLog('Slot '+n+': '+info.label);}
+    catch(e){errors++;bkSlotData.delete(n);const row=bkId('bkSlotRow'+n);if(row){row.querySelector('.bkName').textContent='—';row.querySelector('.bkVer').textContent='—';row.querySelector('.bkSize').textContent='—';row.querySelector('.bkState').textContent='Error de lectura';}bkLog('Slot '+n+': fallo de lectura: '+e.message);}
+  }
+  bkProgress(errors?0:100,errors?'Lectura parcial: '+errors+' slots con error':'Slots actualizados');
+ }catch(e){bkLog('ERROR slots: '+e.message);bkProgress(0,'No se pudieron leer los slots');}
+ finally{usbBusy=false;bkFlashBusy=false;usbRender();bkModeStatus();}
+}
+// Igual que UV Studio: orden 0x0722 con slot y timestamp. NO borra configuración (0x0728).
+async function bkEraseSlot(n){
+ if(bkFlashBusy||usbBusy||!usbPort||usbDead)return;
+ if(!Number.isInteger(n)||n<1||n>4)throw Error('No se puede borrar el slot protegido M');
+ // Comprobación actual justo antes de borrar; el estado visual puede estar desactualizado.
+ let before;
+ try{before=await bkSlotInfo(n);}catch(e){bkLog('No se puede comprobar el slot '+n+': '+e.message);return;}
+ bkRenderSlotInfo(n,before);
+ if(before.empty||!before.canErase){bkLog('Slot '+n+': no se borra (vacío o estado no seguro)');return;}
+ if(!confirm('VAS A BORRAR EL FIRMWARE DEL SLOT '+n+'.\n\nSe conserva su banco de canales y configuración; NO afecta al slot M. ¿Continuar?'))return;
+ if(prompt('Para confirmar el borrado, escribe: BORRAR '+n)!=='BORRAR '+n){bkLog('Borrado del slot '+n+' cancelado.');return;}
+ bkFlashBusy=true;usbBusy=true;usbRender();bkModeStatus();
+ try{
+   const ts=await bkMakeTimestamp(),d=new Uint8Array(6);d[0]=n;new DataView(d.buffer).setUint32(2,ts,true);
+   bkProgress(8,'Borrando firmware de slot '+n);bkLog('Slot '+n+': enviando borrado 0x0722...');
+   const resp=await bkSlotCommand(0x722,d,0x723,35000);
+   if(resp.length<2||resp[1]!==0)throw Error('Borrado rechazado: '+(BK_SLOT_STAT[resp[1]]||resp[1]||'respuesta incompleta'));
+   const after=await bkSlotInfo(n);bkRenderSlotInfo(n,after);
+   if(!after.empty)throw Error('El firmware contestó OK, pero la nueva lectura sigue mostrando '+after.label+'. Verifica con UV Studio.');
+   bkProgress(100,'Slot '+n+' borrado, configuración conservada');bkLog('Slot '+n+': borrado y verificado. Su banco de configuración no se ha modificado.');
+ }catch(e){bkProgress(0,'Error borrando slot '+n);bkLog('ERROR borrado del slot '+n+': '+e.message);alert('No se pudo verificar el borrado de firmware: '+e.message);}
+ finally{usbBusy=false;bkFlashBusy=false;usbRender();bkModeStatus();}
+}
 async function bkMakeTimestamp(){const ts=Date.now()>>>0;const b=new Uint8Array(4);new DataView(b.buffer).setUint32(0,ts,true);const r=await bkSlotCommand(0x514,b,0x515,7000);const fw=new TextDecoder().decode(r).split('\0')[0];if(!/F4HWN/i.test(fw)||!(/v?6[._ ](?:0|1)/.test(fw)))throw Error('El firmware no confirma F4HWN Fusion 6.x: '+fw.slice(0,25));return ts}
 function bkSlotWriteData(slot,offset,ts,chunk){const d=new Uint8Array(12+chunk.length),dv=new DataView(d.buffer);d[0]=slot;dv.setUint32(2,offset,true);dv.setUint16(6,chunk.length,true);dv.setUint32(8,ts,true);d.set(chunk,12);return d}
 async function bkSlotWriteOne(slot,offset,ts,chunk){const b=bkSlotWriteData(slot,offset,ts,chunk);let lastErr;for(let a=0;a<5;a++){try{const resp=await bkSlotCommand(0x724,b,0x725,8000);if(resp.length<2)throw Error('Confirmación vacía');return resp[1]}catch(e){lastErr=e;if(a<4){bkLog('Reintentando bloque '+offset+' ('+(a+1)+'/4)');await bkPause(80);}}}throw lastErr}
 async function bkWriteSlot(){if(bkFlashBusy||usbBusy)return;let file=bkSlotFile;if(!file)return;const slot=Number(bkId('bkSlotSelect').value);if(!Number.isInteger(slot)||slot<1||slot>4)throw Error('Slot inválido');if(!bkId('bkSlotConfirm').checked)return;const edition=bkAscii(bkId('bkSlotName').value);if(!edition){alert('Escribe el nombre del firmware (máximo 15 caracteres).');return}if(!bkId('bkSlotVersion').value.match(/^6\.(0|1)\.\d+$/)){alert('El archivo debe identificarse como firmware Multiboot F4HWN v6.0 o v6.1.');return}if(!confirm('Vas a BORRAR y reescribir el firmware del slot '+slot+'. La configuración de ese slot se mantendrá. ¿Continuar?'))return;
  bkFlashBusy=true;usbBusy=true;usbRender();bkModeStatus();let erased=false;
  try{
-  bkFileOk(file,BK_SLOT_MAX);const image=new Uint8Array(await file.arrayBuffer());const ts=await bkMakeTimestamp();bkLog('Slot '+slot+': borrando imagen anterior...');const d=new Uint8Array(6);d[0]=slot;new DataView(d.buffer).setUint32(2,ts,true);const er=await bkSlotCommand(0x722,d,0x723,35000);if(er[1]!==0)throw Error('El firmware no permitió borrar el slot: '+(BK_SLOT_STAT[er[1]]||er[1]));erased=true;
-  for(let off=0;off<image.length;off+=128){const chunk=image.subarray(off,off+128);const st=await bkSlotWriteOne(slot,0x1000+off,ts,chunk);if(st!==0)throw Error('Error de escritura @'+off+': '+(BK_SLOT_STAT[st]||st));bkProgress((off+chunk.length)/image.length*95,'Escribiendo slot '+slot+': '+Math.round((off+chunk.length)/image.length*100)+' %');}
-  const crc=bkCrc32(image),header=bkHeader(image,{edition,version:'v'+bkId('bkSlotVersion').value});let st=await bkSlotWriteOne(slot,0,ts,header);if(st!==0)throw Error('Error grabando cabecera de slot: '+st);bkProgress(97,'Verificando CRC completo...');const res=await bkSlotCommand(0x726,Uint8Array.of(slot),0x727,25000);if(res.length<6)throw Error('CRC de verificación incompleto');const got=new DataView(res.buffer,res.byteOffset,res.byteLength).getUint32(0,true);if(res[5]!==0||got!==crc)throw Error('CRC no coincide: '+got.toString(16)+' != '+crc.toString(16));bkProgress(100,'Slot '+slot+' grabado y verificado');bkLog('ÉXITO: slot '+slot+' grabado y validado, CRC32 '+crc.toString(16));
-  const info=await bkSlotInfo(slot);const row=bkId('bkSlotRow'+slot);row.querySelector('.bkName').textContent=info.name||'—';row.querySelector('.bkVer').textContent=info.version||'—';row.querySelector('.bkSize').textContent=(info.size/1024).toFixed(1)+' KiB';row.querySelector('.bkState').textContent=BK_SLOT_STAT[info.status]||'—';
+  bkFileOk(file,BK_SLOT_MAX);const image=new Uint8Array(await file.arrayBuffer());const ts=await bkMakeTimestamp();bkLog('Slot '+slot+': borrando imagen anterior...');const d=new Uint8Array(6);d[0]=slot;new DataView(d.buffer).setUint32(2,ts,true);const er=await bkSlotCommand(0x722,d,0x723,35000);if(er.length<2||er[1]!==0)throw Error('El firmware no permitió borrar el slot: '+(BK_SLOT_STAT[er[1]]||er[1]||'respuesta incompleta'));erased=true;
+  for(let off=0;off<image.length;off+=128){const chunk=image.subarray(off,off+128);const st=await bkSlotWriteOne(slot,0x1000+off,ts,chunk);if(st!==0)throw Error('El equipo rechazó el bloque de firmware en 0x'+off.toString(16)+' (código '+st+': '+(BK_SLOT_STAT[st]||'desconocido')+').');bkProgress((off+chunk.length)/image.length*95,'Escribiendo slot '+slot+': '+Math.round((off+chunk.length)/image.length*100)+' %');}
+  const crc=bkCrc32(image),header=bkHeader(image,{edition,version:'v'+bkId('bkSlotVersion').value});let st=await bkSlotWriteOne(slot,0,ts,header);if(st!==0)throw Error('Error grabando cabecera de slot, código '+st+': '+(BK_SLOT_STAT[st]||'desconocido'));bkProgress(97,'Verificando CRC completo...');const res=await bkSlotCommand(0x726,Uint8Array.of(slot),0x727,25000);if(res.length<6)throw Error('CRC de verificación incompleto');const got=new DataView(res.buffer,res.byteOffset,res.byteLength).getUint32(0,true);if(res[5]!==0||got!==crc)throw Error('CRC no coincide: '+got.toString(16)+' != '+crc.toString(16));bkProgress(100,'Slot '+slot+' grabado y verificado');bkLog('ÉXITO: slot '+slot+' grabado y validado, CRC32 '+crc.toString(16));
+  const info=await bkSlotInfo(slot);
+  bkRenderSlotInfo(slot,info);
+  if(info.status!==0||!info.validHeader)throw Error('Grabación verificada por CRC, pero el slot informa '+info.label+'. No intentes arrancarlo sin comprobarlo en UV Studio.');
  }catch(e){bkProgress(0,'ERROR al grabar slot '+slot);bkLog('ERROR: '+e.message+(erased?' — Slot puede estar incompleto; no lo arranques.':''));alert('Flash multiboot: '+e.message);}finally{usbBusy=false;bkFlashBusy=false;usbRender();bkModeStatus();}
 }
 // Escritor DFU PY32F071: mensajes 0x0518/0x0530/0x0519/0x051A y confirmación por página.
@@ -1596,7 +1747,10 @@ for(const role of ['slot','main']){
 }
 bkBuiltinLoad();
 bkId('bkSlotConfirm').addEventListener('change',bkModeStatus);bkId('bkMainConfirm').addEventListener('change',bkModeStatus);bkId('bkRadioModel').addEventListener('change',bkModeStatus);
-bkId('bkRefreshSlots').addEventListener('click',bkRefreshSlots);bkId('bkWriteSlot').addEventListener('click',bkWriteSlot);bkId('bkFlashMain').addEventListener('click',bkFlashMain);bkId('bkProbeDfu').addEventListener('click',bkProbeDfu);bkId('bkReleaseUsb').addEventListener('click',bkReleaseUsb);
+bkId('bkRefreshSlots').addEventListener('click',bkRefreshSlots);
+for(let n=1;n<=4;n++)bkId('bkEraseSlot'+n).addEventListener('click',()=>bkEraseSlot(n));
+bkId('bkWriteSlot').addEventListener('click',bkWriteSlot);
+bkId('bkExportFlashLog').addEventListener('click',()=>{const content=bkId('bkFlashLog')?.textContent?.trim()||'Sin operaciones registradas.';saveBlob(content+'\n','bricohams_flash_diagnostico_'+new Date().toISOString().slice(0,10)+'.txt','text/plain;charset=utf-8')});bkId('bkFlashMain').addEventListener('click',bkFlashMain);bkId('bkProbeDfu').addEventListener('click',bkProbeDfu);bkId('bkReleaseUsb').addEventListener('click',bkReleaseUsb);
 // El monitor solo actualiza la disponibilidad de botones; no transmite nada.
 setInterval(bkModeStatus,700);bkModeStatus();
 
