@@ -29,8 +29,8 @@ La aplicación también incorpora una lista de ejemplo de **42 canales de Murcia
 - Un **Quansheng UV-K1 o UV-K5 V3** compatible con F4HWN Fusion 6.0 o 6.1, según la operación.
 - Cable USB de programación adecuado para la radio y sus controladores instalados en el ordenador.
 - **Google Chrome o Microsoft Edge** con soporte para la API Web Serial.
-- Para utilizarlo sin Internet, solo se necesita el archivo `index.html` (el logo está integrado en el HTML).
-- Los firmware `.bin` necesarios para Flash deben conseguirse por separado de fuentes fiables y compatibles con el modelo.
+- Para utilizarlo sin Internet, solo se necesita el archivo `index.html`. El logo y los dos firmware de la pestaña **Flash** van integrados en el HTML.
+- Cualquier otro firmware `.bin` debe conseguirse por separado, de fuentes fiables y compatibles con el modelo.
 
 ## 🚀 Inicio rápido
 
@@ -46,22 +46,17 @@ La aplicación también incorpora una lista de ejemplo de **42 canales de Murcia
 
 ## ⚡ Flash: Multiboot y firmware principal
 
-La pestaña **Flash** permite escoger uno de estos BIN locales:
+La pestaña **Flash** ofrece dos firmware integrados en `index.html` y la opción de elegir otro archivo:
 
-- `stable.bin` — selección rápida **STABLE**.
-- `ardf.bin` — selección rápida **ARDF**.
-- **Otro BIN** — selección manual de un archivo diferente.
+| Opción | Archivo integrado | Tamaño | SHA-256 |
+| --- | --- | --- | --- |
+| **STABLE** (F4HWN Fusion 6.1.0) | `stable.bin` | 107.644 B | `4458bd5e55461394b5c91efa768e5f8ba676204c776875c1391c97346188fe70` |
+| **ARDF** (F4HWN 6.0.0) | `ardf.bin` | 114.360 B | `c257b7da3e57b1c0331a01cbae163a0552310c3439f48d5e55457f74eec87f0e` |
+| **Otro BIN** | Elegido por ti | — | — |
 
-Puedes organizar el directorio local así:
+`stable.bin` es idéntico a `f4hwn.fusion.v6.1.0.bin` de la [release v6.1.0 de F4HWN](https://github.com/armel/uv-k1-k5v3-firmware-custom/releases/tag/v6.1.0). El hash de `ardf.bin` no coincide con ningún archivo publicado por F4HWN ni por [reald/ARDF](https://github.com/reald/uv-k1-k5v3-firmware-custom/releases): su procedencia está **pendiente de documentar**.
 
-```text
-bricohams-quansheng-studio/
-├── index.html
-├── ardf.bin      # opcional; NO incluido aquí
-└── stable.bin    # opcional; NO incluido aquí
-```
-
-> **HTML offline:** por las restricciones de seguridad del navegador, abrir `index.html` con doble clic no concede acceso automático a los archivos de la misma carpeta. En **Flash**, usa **Autorizar carpeta con BIN** o **Seleccionar carpeta (alternativo)**. El acceso a los archivos se concede durante la sesión.
+Al abrir la página, la aplicación comprueba el tamaño y el CRC32 de cada BIN integrado antes de ofrecerlo. No necesita acceder a carpetas ni a la red.
 
 ### Slots Multiboot (1–4)
 
@@ -96,7 +91,6 @@ Apaga la radio. Después, mantén pulsado **PTT** al encenderla para entrar en m
 .
 ├── index.html                 # Aplicación web autónoma
 ├── README.md                  # Documentación del proyecto
-├── .gitignore                 # Evita subir BINs y respaldos por accidente
 └── assets/
     └── logo-bricohams.png    # Imagen para este README
 ```
@@ -113,4 +107,4 @@ Apaga la radio. Después, mantén pulsado **PTT** al encenderla para entrar en m
 
 **Antes de publicar o distribuir el código**, revisa las condiciones de las dependencias y del código de origen: los controladores CHIRP facilitados con este proyecto incluyen avisos **GNU GPL versión 2 o posterior**. Si el HTML contiene código derivado sujeto a GPL, debe respetarse esa licencia al redistribuirlo. Añade el archivo `LICENSE` y los avisos legales adecuados tras comprobar todas las procedencias.
 
-Los archivos `ardf.bin` y `stable.bin` **no se incluyen en este repositorio preparado**. Añádelos o distribúyelos por separado solo si tienes derecho a hacerlo y son compatibles con el hardware al que van destinados.
+`index.html` **incluye** los firmware `stable.bin` y `ardf.bin` (ver [Flash](#-flash-multiboot-y-firmware-principal)). Al redistribuirlo se distribuyen también esos binarios: respeta la licencia de F4HWN (Apache-2.0), conserva sus créditos y documenta la procedencia de `ardf.bin` antes de publicar nuevas versiones.
