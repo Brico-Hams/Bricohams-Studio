@@ -36,9 +36,9 @@ La aplicación también incorpora una lista de ejemplo de **42 canales de Murcia
 
 | Forma | Cómo | Plataformas |
 | --- | --- | --- |
-| **Web** | Abre <https://bricohams.github.io/Bricohams-Studio/> en Chrome o Edge. | Cualquier sistema con Web Serial |
+| **Web** | Abre <https://brico-hams.github.io/Bricohams-Studio/> en Chrome o Edge. | Cualquier sistema con Web Serial |
 | **Archivo suelto** | Descarga `index.html` y ábrelo con doble clic. Funciona sin Internet. | Cualquier sistema con Web Serial |
-| **Instalado** | Instala [Bricohams Radio Workspace](https://github.com/anatolbricoham/Radio-Web-install/releases/latest) y verifica antes el archivo con su `SHA256SUMS`. Studio va incluido y se abre en `http://127.0.0.1:8787/studio.html`. | Windows 11 x64, Debian/Ubuntu, Raspberry Pi OS (arm64/armhf), Arch Linux, FreeBSD 14 |
+| **Instalado** | Instala [Bricohams Radio Workspace](https://github.com/Brico-Hams/Radio-Web-install/releases/latest) y verifica antes el archivo con su `SHA256SUMS`. Studio va incluido y se abre en `http://127.0.0.1:8787/studio.html`. | Windows 11 x64, Debian/Ubuntu, Raspberry Pi OS (arm64/armhf), Arch Linux, FreeBSD 14 |
 
 La versión instalada sirve una copia de este `index.html` fijada por commit y SHA-256 (`studio.lock.json` en Radio Workspace). Por eso puede ir unas versiones por detrás de la web. Allí, además, se pueden preparar canales con corrección Doppler para pases de satélites FM.
 
