@@ -32,9 +32,19 @@ La aplicación también incorpora una lista de ejemplo de **42 canales de Murcia
 - Para utilizarlo sin Internet, solo se necesita el archivo `index.html`. El logo y los dos firmware de la pestaña **Flash** van integrados en el HTML.
 - Cualquier otro firmware `.bin` debe conseguirse por separado, de fuentes fiables y compatibles con el modelo.
 
+## 📦 Formas de usarlo
+
+| Forma | Cómo | Plataformas |
+| --- | --- | --- |
+| **Web** | Abre <https://bricohams.github.io/Bricohams-Studio/> en Chrome o Edge. | Cualquier sistema con Web Serial |
+| **Archivo suelto** | Descarga `index.html` y ábrelo con doble clic. Funciona sin Internet. | Cualquier sistema con Web Serial |
+| **Instalado** | Instala [Bricohams Radio Workspace](https://github.com/anatolbricoham/Radio-Web-install/releases/latest) y verifica antes el archivo con su `SHA256SUMS`. Studio va incluido y se abre en `http://127.0.0.1:8787/studio.html`. | Windows 11 x64, Debian/Ubuntu, Raspberry Pi OS (arm64/armhf), Arch Linux, FreeBSD 14 |
+
+La versión instalada sirve una copia de este `index.html` fijada por commit y SHA-256 (`studio.lock.json` en Radio Workspace). Por eso puede ir unas versiones por detrás de la web. Allí, además, se pueden preparar canales con corrección Doppler para pases de satélites FM.
+
 ## 🚀 Inicio rápido
 
-1. Descarga `index.html` y ábrelo con **Chrome o Edge**.
+1. Abre la web o descarga `index.html` y ábrelo con **Chrome o Edge**.
 2. Enciende la radio normalmente y conéctala mediante su cable de programación.
 3. En **Conexión**, pulsa **Conectar, detectar y leer** y concede acceso al puerto serie.
 4. Abre **Canales** para ver las memorias leídas. Puedes pulsar directamente las celdas para editar.
