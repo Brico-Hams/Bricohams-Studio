@@ -1277,6 +1277,9 @@ $('#usbWriteDisabled').onclick=()=>usbSafely(async()=>{
 if(!usbSnapshot||!usbVersion||usbSnapshotVersion!==usbVersion)throw Error('Primero debes leer los canales de esta radio');
 // Escritura de canales desde la imagen leída en RAM: no fuerza descargas ni guarda archivos.
 if(!rows.size&&!deleted.size)throw Error('No hay canales para grabar');
+// Un banco Multiboot de otra edición o con datos ajenos se decodifica con frecuencias imposibles: no se escribe encima.
+const implausible=[...radioRows.values()].filter(ch=>!(ch.rx>=18&&ch.rx<=1300));
+if(implausible.length)throw Error('La memoria leída no tiene el formato esperado: '+implausible.length+' canales con frecuencias imposibles (p. ej. canal '+implausible[0].id+'). Puede ser otro slot Multiboot o una edición con otra estructura. No se escribirá nada.');
 const snapshot=usbSnapshot, {chunks,image}=planChanges(snapshot);
 const newlyUnlocked=[...rows.values()].filter(ch=>radioRows.has(ch.id)&&isTxLocked(radioRows.get(ch.id))&&!isTxLocked(ch));
 if(newlyUnlocked.length&&!confirm('ATENCIÓN: vas a desbloquear la transmisión en '+newlyUnlocked.length+' memorias antes bloqueadas en el walkie. Esto puede permitir emisiones en frecuencias no autorizadas (por ejemplo PMR446 o enlaces de satélites).\n\n¿Confirmas expresamente este cambio?'))return;
