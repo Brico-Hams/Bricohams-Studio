@@ -2904,7 +2904,7 @@ const RB_DISTRICTS={1:'EA1 · Galicia, Asturias, Cantabria y Castilla y León',2
 rbById('rbZone').append(...Object.entries(RB_DISTRICTS).map(([d,label])=>new Option(label,d)),new Option('Sin distrito reconocible','0'));
 function rbRadioName(r,mode){
  const clean=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-Z0-9 -]/g,' ').replace(/\s+/g,' ').trim();
- const city=clean(String(r.place||'').split(/ · | - |,|\(/)[0]).replace(/^(SIERRA|MONTE|PICO|ALTO|PUERTO|CERRO|PENA|TORRE|REPETIDOR)( (DE|DEL))?( (LA|EL|LOS|LAS))? /,'');
+ const city=clean(String(r.place||'').split(/ · | - |,|\(/)[0]).replace(/^(SIERRA|MONTE|PICO|ALTO|PUERTO|CERRO|PENA|TORRE|REPETIDOR)( (DE|DEL))?( (LA|EL|LOS|LAS))? /,'').replace(/^(LA|EL|LOS|LAS|L) /,'');
  const call=clean(r.call).replace(/ /g,'');
  if(mode==='place'&&city)return city.slice(0,10).trim();
  if(mode==='both'&&city&&call)return (call+' '+city).slice(0,10).trim();

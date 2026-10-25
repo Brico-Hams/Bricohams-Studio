@@ -16,7 +16,7 @@
 | Sección | Funcionalidad |
 | --- | --- |
 | **Conexión** | Acceso por USB desde el navegador, detección de F4HWN Fusion 6.0 / 6.1 y lectura automática de canales. |
-| **Canales** | Hasta 1.024 memorias, edición directa en la tabla, RX/TX, simplex o repetidor, tonos, potencia, escaneo y modos FM, NFM, AM, NAM y USB. |
+| **Canales** | Hasta 1.024 memorias, edición directa en la tabla, RX/TX, simplex o repetidor, tonos, potencia, escaneo y modos FM, NFM, AM, NAM y USB. Catálogo de repetidores de España agrupado por distritos EA1–EA9: cada distrito va a su lista de escaneo y el nombre en pantalla puede ser el indicativo, la localidad o ambos. |
 | **Configuración** | Edición de los ajustes compatibles con el firmware: pantalla, teclas, squelch global, escaneo, DTMF, radio FM y más. |
 | **Archivos y copias** | Importación/exportación CSV (incluidos CHIRP y formatos similares), copias de memoria BIN, exportación de calibración y copia/importación de los textos del logo de arranque. |
 | **Flash** | Consulta y grabación de slots de usuario **1–4** de Multiboot, y programación del firmware principal en modo FLASH/DFU. |
