@@ -566,12 +566,13 @@ function render(){let r=listRows();$('#statRows').textContent=rows.size;
  let body=$('#tableBody');body.replaceChildren();if(!r.length){body.innerHTML='<tr><td colspan="11"><div class="empty"><strong>No hay canales que mostrar</strong>Importa tu CSV, carga el ejemplo Murcia o añade un canal.</div></td></tr>'}else for(let ch of r){
   let tr=document.createElement('tr');
   const click=(field,content,extra='')=>`<td class="cell-edit ${extra}" data-id="${ch.id}" data-field="${field}" tabindex="0" title="Clic para editar ${field}">${content}<span class="edit-pencil" aria-hidden="true">✎</span></td>`;
-  tr.innerHTML=`<td>${ch.id}</td>${click('name','<b>'+escapeHtml(ch.name||'SIN NOMBRE')+'</b>')}${click('rx',fmhz(ch.rx),'freq')}${click('tx',isTxLocked(ch)?badge('TX bloqueada','rx'):sameTx(ch)?badge('Misma TX','same'):fmhz(ch.tx),isTxLocked(ch)?'off':sameTx(ch)?'same':'freq')}${click('mode',badge(escapeHtml(ch.mode)))}${click('toneTx',ch.toneTx==null?'—':Number(ch.toneTx).toFixed(1))}${click('toneRx',ch.toneRx==null?'<span class="tone-off">Sin tono</span>':'CTCSS '+Number(ch.toneRx).toFixed(1))}${click('power',escapeHtml(POWER[ch.power]||'USER'))}${click('scan',ch.scan?(ch.list?'Lista '+ch.list:'Sí'):'No')}<td><button class="btn sm edit" data-id="${ch.id}">Editar todo</button></td>`;
+  tr.innerHTML=`<td>${ch.id}</td>${click('name','<b>'+escapeHtml(ch.name||'SIN NOMBRE')+'</b>')}${click('rx',fmhz(ch.rx),'freq')}${click('tx',isTxLocked(ch)?badge('TX bloqueada','rx'):sameTx(ch)?badge('Misma TX','same'):fmhz(ch.tx),isTxLocked(ch)?'off':sameTx(ch)?'same':'freq')}${click('mode',badge(escapeHtml(ch.mode)))}${click('toneTx',ch.toneTx==null?'—':Number(ch.toneTx).toFixed(1))}${click('toneRx',ch.toneRx==null?'<span class="tone-off">Sin tono</span>':'CTCSS '+Number(ch.toneRx).toFixed(1))}${click('power',escapeHtml(POWER[ch.power]||'USER'))}${click('scan',ch.scan?(ch.list?'Lista '+ch.list:'Sí'):'No')}<td><button class="btn sm edit" data-id="${ch.id}">Editar todo</button> <button class="btn sm" type="button" data-copy-id="${ch.id}" title="Copiar este canal en la primera posición libre">⧉ Copiar</button></td>`;
   tr.dataset.channelId=String(ch.id);
   tr.insertAdjacentHTML('afterbegin',`<td class="rb-order-cell"><button type="button" class="btn sm rb-drag" draggable="true" data-move-handle="${ch.id}" aria-label="Arrastrar canal ${ch.id} con el ratón" title="Mantén pulsado y arrastra para cambiar la posición">⠿ Arrastrar</button></td>`);
   body.append(tr)
  }
  body.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>openEditor(Number(b.dataset.id)));
+ body.querySelectorAll('button[data-copy-id]').forEach(b=>b.onclick=()=>copyChannel(Number(b.dataset.copyId)));
  $('#selectedDriver').textContent='F4HWN '+$('#profile').value;
  if(typeof usbRender==='function')usbRender();
 }
@@ -609,6 +610,11 @@ $('#tableBody').addEventListener('keydown',e=>{if(e.target.closest('input,select
 $('#search').oninput=render;$('#filter').onchange=render;$('#profile').onchange=render;
 $$('.tone-select').forEach(select=>CTCSS.forEach(n=>{let o=document.createElement('option');o.value=n.toFixed(1);o.textContent=n.toFixed(1)+' Hz';select.append(o)}));
 function openEditor(id=null){editOldId=id;let ch=id==null?{id:findFreeSlot(),name:'',rx:'',tx:null,txLocked:false,mode:'FM',power:7,toneTx:null,toneRx:null,scan:true,comment:''}:rows.get(id);if(!ch){notify('El canal ya no existe.');return}if(ch.unsupportedTone){notify('Este canal tiene DCS u otro tono que el editor no puede conservar al regrabar. Edítalo en CHIRP con el controlador correcto.');return}$('#editorTitle').textContent=id==null?'Añadir canal':'Editar canal '+id;let form=$('#editForm');for(let field of ['id','name','rx','mode','power','scan','comment'])form.elements[field].value=ch[field]??'';form.elements.tx.value=ch.tx??'';form.elements.txLocked.value=String(!!ch.txLocked);form.elements.toneTx.value=ch.toneTx==null?'':Number(ch.toneTx).toFixed(1);form.elements.toneRx.value=ch.toneRx==null?'':Number(ch.toneRx).toFixed(1);$('#deleteBtn').style.display=id==null?'none':'';$('#editor').showModal()}
+function copyChannel(id){const ch=rows.get(id);if(!ch)return;let slot=0;
+ for(let i=id+1;i<=NUM_RADIO_CHANNELS&&!slot;i++)if(!rows.has(i))slot=i;for(let i=1;i<id&&!slot;i++)if(!rows.has(i))slot=i;
+ if(!slot){notify('No hay posiciones libres para copiar el canal.');return}
+ rows.set(slot,{...ch,id:slot});deleted.delete(slot);render();
+ notify('Canal '+id+' copiado en la posición '+slot+'. Arrástralo a su sitio si quieres y pulsa Subir canales.');log('Canal '+id+' copiado en la posición '+slot+'.')}
 function findFreeSlot(){for(let i=1;i<=NUM_RADIO_CHANNELS;i++)if(!rows.has(i))return i;return NUM_RADIO_CHANNELS}
 $('#btnSubirCanalesTabla').onclick=()=>$('#usbWriteDisabled').click();
 $('#btnAdd').onclick=()=>openEditor();$('#closeModal').onclick=$('#cancelBtn').onclick=()=>$('#editor').close();$('#editor').addEventListener('click',e=>{if(e.target===$('#editor'))$('#editor').close()});
@@ -882,7 +888,11 @@ async function usbSafely(action){if(usbBusy)return;usbBusy=true;usbRender();try{
 }finally{usbBusy=false;usbRender();cfgUpdateProfileUI()}}
 $('#usbConnect').onclick=()=>usbSafely(async()=>{if(!('serial' in navigator))throw Error('Tu navegador no dispone de Web Serial. Usa Chrome/Edge y, si file:// lo bloquea, abre el HTML desde http://localhost.');
 if(usbPort||usbCloseInFlight)await usbClose(); // Libera la sesión anterior, incluso si quedó inaccesible.
-let port=await navigator.serial.requestPort();try{await port.open({baudRate:38400,dataBits:8,stopBits:1,parity:'none',flowControl:'none'});
+let port;try{const granted=navigator.serial.getPorts?(await navigator.serial.getPorts()).filter(p=>!p.readable):[];
+ port=granted.length===1?granted[0]:await navigator.serial.requestPort();}
+catch(e){if(e.name==='NotFoundError')throw Error('No se eligió ningún puerto. En el diálogo del navegador selecciona el walkie (USB Serial Device / COM) y pulsa Conectar.');throw e}
+try{try{await port.open({baudRate:38400,dataBits:8,stopBits:1,parity:'none',flowControl:'none'})}
+catch(e){if(e.name==='InvalidStateError'||e.name==='NetworkError')throw Error('El puerto del walkie está ocupado. Cierra CHIRP, otras pestañas de Studio o la web de instalación que lo usen y vuelve a pulsar Leer del walkie.');throw e}
 usbPort=port;usbReader=port.readable.getReader();usbWriter=port.writable.getWriter();usbCache=[];usbDead=false;factoryStock=false;cfgProfileOverride='auto';cfgProfile='fusion';dropSnapshot();
 usbFirmware=await usbIdentify();usbVersion=usbClassify(usbFirmware);factoryStock=!usbVersion&&usbIsFactoryV3(usbFirmware);
 if(usbVersion){if(usbKnownMemoryProfile()&&$('#profile').querySelector('option[value="'+usbVersion+'"]'))$('#profile').value=usbVersion;$('#usbProgressText').textContent=usbKnownMemoryProfile()?'Fusion '+usbVersion+' identificada. Leyendo canales del walkie…':usbKnownChannelProfile()?'F4HWN '+usbVersion+' detectado. Pulsa Leer del walkie para mostrar los canales en la tabla, sin descargar archivos. Configuración bloqueada.':'F4HWN '+usbVersion+' detectado. Lectura experimental de solo lectura; escritura bloqueada.';log('Radio identificada: '+usbFirmware+' → '+usbVersion+(usbKnownMemoryProfile()?'':' · perfil de memoria no validado, SOLO LECTURA'));render();if(bkPendingConfigRead&&usbKnownMemoryProfile()){bkPendingConfigRead=false;await usbAcquireSnapshot(false,false);showTab('config');$('#cfgReadFromRadioStatus').textContent='Configuración leída y mostrada. Sin descarga BIN.';}else if(bkPendingChannelsRead&&usbKnownChannelProfile()){bkPendingChannelsRead=false;await usbAcquireSnapshot(false,true);showTab('memorias');$('#channelsReadFromRadioStatus').textContent='Canales leídos y mostrados en la tabla editable.';}else if(usbKnownChannelProfile())await usbAcquireSnapshot(false,true)}
@@ -1000,7 +1010,7 @@ async function usbDetectConfigProfile(){
  log('Perfil de ajustes detectado: '+(cfgProfile==='ardf'?'ARDF':'Fusion')+' (indicadores 0xA158='+Array.from(flags,b=>b.toString(16).padStart(2,'0')).join('')+').');
 }
 function usbDecodeChannels(image){let result=new Map;const dv=new DataView(image.buffer,image.byteOffset,image.byteLength),modes=['FM','NFM','AM','NAM','USB'];for(let i=0;i<NUM_RADIO_CHANNELS;i++){const off=i*CHAN_SIZE,freq=dv.getUint32(off,true);if(!freq||freq===0xffffffff)continue;let d=(image[off+11]&15),offset=dv.getUint32(off+4,true)/1e5,rx=freq/1e5,tx=d===2?rx-offset:d===1?rx+offset:rx,txLocked=!!(image[off+12]&0x40);let modeIndex=((image[off+11]>>4)&15)*2+((image[off+12]>>1)&1);let mode=modeIndex===5?'USB':(modes[modeIndex]||'FM');if(!CHANNEL_MODES.includes(mode))continue;let name='';for(let k=0;k<16;k++){const ch=image[NAME_START+i*16+k];if(ch===0||ch===255)break;name+=String.fromCharCode(ch)}const t=(image[off+10]>>4)&15,rt=image[off+10]&15;let toneTx=t===1?CTCSS[image[off+9]]??null:null,toneRx=rt===1?CTCSS[image[off+8]]??null:null;
-result.set(i+1,{id:i+1,name:name.trim().slice(0,10),rx:Number(rx.toFixed(5)),tx:Number(tx.toFixed(5)),txLocked,mode,power:Math.min(7,(image[off+12]>>2)&7),toneTx,toneRx,scan:image[ATTR_START+i*2+1]!==0,list:(image[ATTR_START+i*2+1]>=1&&image[ATTR_START+i*2+1]<=24)?image[ATTR_START+i*2+1]:null,comment:'',unsupportedTone:(t>1||rt>1)});}return result;}
+result.set(i+1,{id:i+1,origin:i+1,name:name.trim().slice(0,10),rx:Number(rx.toFixed(5)),tx:Number(tx.toFixed(5)),txLocked,mode,power:Math.min(7,(image[off+12]>>2)&7),toneTx,toneRx,scan:image[ATTR_START+i*2+1]!==0,list:(image[ATTR_START+i*2+1]>=1&&image[ATTR_START+i*2+1]<=24)?image[ATTR_START+i*2+1]:null,comment:'',unsupportedTone:(t>1||rt>1)});}return result;}
 function copyRadioChannelsToTable(){
   const incoming=new Map(radioRows);
   // Si había un CSV o cambios preparados, no descartarlos sin permiso.
@@ -1183,8 +1193,11 @@ $('#usbViewChannels').onclick=()=>{if(!usbSnapshot)return;const data=usbDecodeCh
 function bset32(img,pos,value){if(!Number.isInteger(value)||value<0||value>0xffffffff)throw Error('Frecuencia en formato binario incorrecto');new DataView(img.buffer,img.byteOffset,img.byteLength).setUint32(pos,value,true)}
 function freqRaw(mhz){const raw=mhz*1e5;if(!Number.isFinite(raw)||Math.abs(raw-Math.round(raw))>.0001)throw Error('Frecuencia sin resolución de 10 Hz: '+mhz);return Math.round(raw)}
 function bandFor(mhz){if(mhz>=18&&mhz<108)return 0;if(mhz>=108&&mhz<137)return 1;if(mhz>=137&&mhz<174)return 2;if(mhz>=174&&mhz<350)return 3;if(mhz>=350&&mhz<400)return 4;if(mhz>=400&&mhz<470)return 5;if(mhz>=470&&mhz<=1300)return 6;throw Error('Frecuencia fuera de bandas F4HWN: '+mhz)}
-function encodeRow(img,rr){const ch=validRow({...rr}),n=ch.id-1;if(ch.unsupportedTone)throw Error('No se puede modificar la memoria '+ch.id+' porque contiene DCS o tono de tipo no soportado: usa CHIRP para conservarlo.');const addr=CHAN_START+n*16,nameAddr=NAME_START+n*16,at=ATTR_START+n*2;
-if(n<0||n>=NUM_RADIO_CHANNELS)throw Error('Posición fuera de rango');const blank=img[addr]===255&&img[addr+1]===255&&img[addr+2]===255&&img[addr+3]===255;
+function encodeRow(img,rr,base=img){const ch=validRow({...rr}),n=ch.id-1;if(ch.unsupportedTone)throw Error('No se puede modificar la memoria '+ch.id+' porque contiene DCS o tono de tipo no soportado: usa CHIRP para conservarlo.');const addr=CHAN_START+n*16,nameAddr=NAME_START+n*16,at=ATTR_START+n*2;
+if(n<0||n>=NUM_RADIO_CHANNELS)throw Error('Posición fuera de rango');
+// A channel moved from another slot starts from its own record and attributes, not from the previous occupant's.
+const from=rr.origin&&rr.origin!==ch.id?rr.origin-1:-1;if(from>=0&&base[from*16]!==255){img.set(base.subarray(from*16,from*16+16),addr);img.set(base.subarray(ATTR_START+from*2,ATTR_START+from*2+2),at)}
+const blank=img[addr]===255&&img[addr+1]===255&&img[addr+2]===255&&img[addr+3]===255;
 if(blank){img.fill(0,addr,addr+16);img[addr+14]=4;} // paso 12.5 kHz en canal nuevo
 const rxRaw=freqRaw(ch.rx),offRaw=ch.tx==null?0:Math.abs(freqRaw(ch.tx)-rxRaw);bset32(img,addr,rxRaw);bset32(img,addr+4,offRaw);
 const t=ch.toneTx==null?0:CTCSS.findIndex(a=>Math.abs(ch.toneTx-a)<.02),r=ch.toneRx==null?0:CTCSS.findIndex(a=>Math.abs(ch.toneRx-a)<.02);
@@ -1192,15 +1205,18 @@ if(t<0||r<0)throw Error('CTCSS no encontrado');img[addr+8]=r;img[addr+9]=t;img[a
 const dir=ch.tx==null||Math.abs(ch.rx-ch.tx)<.000005?0:ch.tx>ch.rx?1:2;
 const modeBits={FM:[0,0],NFM:[0,1],AM:[1,0],NAM:[1,1],USB:[2,1]};const [mode,bw]=modeBits[ch.mode];
 img[addr+11]=((mode&15)<<4)|(dir&15);
-// Preserva BusyCL y reverse; el bloqueo TX es independiente de que TX sea igual a RX. Bit6 = bloqueo explícito.
-img[addr+12]=(img[addr+12]&0xa0)|(ch.txLocked?0x40:0)|((ch.power&7)<<2)|(bw<<1);
+// Preserva reverse (bit 0), BusyCL (bit 5) y bit 7; el bloqueo TX es independiente de que TX sea igual a RX. Bit6 = bloqueo explícito.
+img[addr+12]=(img[addr+12]&0xa1)|(ch.txLocked?0x40:0)|((ch.power&7)<<2)|(bw<<1);
 if(img[addr+13]===255)img[addr+13]=0;if(img[addr+14]===255||img[addr+14]>=24)img[addr+14]=4;if(img[addr+15]===255)img[addr+15]=0;
-img.fill(0,nameAddr,nameAddr+16);for(let k=0;k<10;k++)img[nameAddr+k]=k<ch.name.length?ch.name.charCodeAt(k):32;
+img.fill(0,nameAddr,nameAddr+16);for(let k=0;k<ch.name.length;k++)img[nameAddr+k]=ch.name.charCodeAt(k);
 const oldAtr=img[at]===255?0:img[at];img[at]=(oldAtr&0xf8)|(bandFor(ch.rx)&7);
-const oldScan=img[at+1];const previous=radioRows.get(ch.id);if(!previous||ch.scan!==previous.scan||(ch.list??null)!==(previous.list??null))img[at+1]=ch.scan?(ch.list>=1&&ch.list<=24?ch.list:(oldScan>=1&&oldScan<=25?oldScan:25)):0;
+const oldScan=img[at+1];const previous=radioRows.get(ch.origin??ch.id);if(!previous||ch.scan!==previous.scan||(ch.list??null)!==(previous.list??null))img[at+1]=ch.scan?(ch.list>=1&&ch.list<=24?ch.list:(oldScan>=1&&oldScan<=25?oldScan:25)):0;
 }
-function planChanges(oldimg){const img=oldimg.slice();for(const row of rows.values()){if(!eqRadio(row,radioRows.get(row.id)))encodeRow(img,row);}
-for(const id of deleted){if(!rows.has(id)&&id>=1&&id<=NUM_RADIO_CHANNELS){const n=id-1;img.fill(255,n*16,n*16+16);img.fill(32,NAME_START+n*16,NAME_START+n*16+16);img.fill(255,ATTR_START+n*2,ATTR_START+n*2+2)}}
+function copyRawChannel(img,base,from,to){const f=from-1,t=to-1;img.set(base.subarray(f*16,f*16+16),CHAN_START+t*16);img.set(base.subarray(NAME_START+f*16,NAME_START+f*16+16),NAME_START+t*16);img.set(base.subarray(ATTR_START+f*2,ATTR_START+f*2+2),ATTR_START+t*2)}
+function planChanges(oldimg){const img=oldimg.slice();for(const row of rows.values()){if(eqRadio(row,radioRows.get(row.id)))continue;const src=row.origin&&row.origin!==row.id?radioRows.get(row.origin):null;
+// A moved or copied channel that is otherwise unchanged keeps its exact bytes (DCS, step, BCL, scramble...).
+if(src&&eqRadio({...row,id:src.id},src))copyRawChannel(img,oldimg,src.id,row.id);else encodeRow(img,row,oldimg);}
+for(const id of deleted){if(!rows.has(id)&&id>=1&&id<=NUM_RADIO_CHANNELS){const n=id-1;img.fill(255,n*16,n*16+16);img.fill(255,NAME_START+n*16,NAME_START+n*16+16);img.fill(255,ATTR_START+n*2,ATTR_START+n*2+2)}}
 let chunks=[];for(let off=0;off<0x880e;off+=128){let end=Math.min(off+128,0x880e),before=oldimg.subarray(off,end),after=img.subarray(off,end);if(before.some((b,i)=>b!==after[i]))chunks.push({offset:off,before:before.slice(),after:after.slice()})}
 // las escrituras deben ir alineadas en 0x80; último bloque de atributos termina 0x880e y no altera lista de nombres
 return {image:img,chunks};}
