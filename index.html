@@ -473,7 +473,8 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 <div class="rb-tablewrap"><table class="rb-table"><thead><tr><th><input aria-label="Marcar todos los elementos visibles" id="rbSelectVisible" title="Seleccionar todos los elementos visibles" type="checkbox"/></th><th>Origen</th><th>Indicativo / nombre</th><th>Ubicación</th><th>RX (MHz)</th><th>TX (MHz)</th><th>Tono TX</th><th>Estado</th></tr></thead><tbody id="rbPreviewBody"></tbody></table></div>
 <div class="rb-import-actions">
 <button class="btn" id="rbNone" type="button">Desmarcar todos</button>
-<button class="btn primary" disabled="" id="rbApplyImport" type="button">＋ Añadir seleccionados a Canales</button>
+<button aria-describedby="rbSelectionStatus" class="btn primary" disabled="" id="rbApplyImport" type="button">＋ Añadir seleccionados a Canales</button>
+<span class="small" id="rbSelectionStatus" role="status"></span>
 <span class="small" id="rbImportStatus" role="status">Se añaden sin sobrescribir canales; primero repetidores, después satélites y PMR.</span>
 </div>
 <div class="small rb-attribution">Fuente del catálogo de repetidores: CSV facilitado por el usuario, exportado el 12/10/2026 de <a href="https://www.repeaterbook.com/row_repeaters/Display_SS.php?state_id=ES" target="_blank" rel="noopener noreferrer">RepeaterBook.com</a>. No hay actualización automática. <b>El CSV no incluye estado activo/inactivo.</b> Los 21 canales de satélites/ISS/balizas y los 16 PMR446 proceden de la plantilla de 42 presets. Verifica frecuencias y actividad antes de transmitir.</div>
@@ -2917,7 +2918,9 @@ const rbPresetExtras=(()=>{
 function rbLockPresetRx(map){
  for(const [id,ch] of map){if(/^PMR-/.test(ch.name))map.set(id,{...ch,tx:ch.rx,txLocked:false});else if(/^(SAT-|ISS-|M-)/.test(ch.name))map.set(id,{...ch,tx:null,txLocked:true})}
 }
-function rbCanChoose(r){return r.kind!=='rb'||r.confirmed||(r.unknown&&rbById('rbConfirmFiltered').checked)}
+// La selección es independiente de la confirmación de actividad; se comprueba al importar.
+function rbCanChoose(r){return r.kind!=='rb'||r.confirmed||r.unknown}
+function rbNeedsConfirmation(chosen){return !rbById('rbConfirmFiltered').checked&&chosen.some(r=>r.kind==='rb'&&r.unknown&&!r.confirmed)}
 // Distritos radioaficionados de España: el dígito del indicativo (ED5…, EA5…) indica la zona.
 const RB_DISTRICTS={1:'EA1 · Galicia, Asturias, Cantabria y Castilla y León',2:'EA2 · País Vasco, Navarra, La Rioja y Aragón',3:'EA3 · Cataluña',4:'EA4 · Madrid, Castilla-La Mancha y Extremadura',5:'EA5 · C. Valenciana, Murcia y Albacete',6:'EA6 · Baleares',7:'EA7 · Andalucía',8:'EA8 · Canarias',9:'EA9 · Ceuta y Melilla'};
 rbById('rbZone').append(...Object.entries(RB_DISTRICTS).map(([d,label])=>new Option(label,d)),new Option('Sin distrito reconocible','0'));
@@ -2942,20 +2945,23 @@ function rbPaint(){
  for(const r of all.slice(0,400)){
   const tr=document.createElement('tr');const cell=value=>{const td=document.createElement('td');td.textContent=value;tr.append(td)};
   const td=document.createElement('td');const input=document.createElement('input');input.type='checkbox';
-  input.checked=rbSelected.has(r.key);input.disabled=!rbCanChoose(r);input.title=input.disabled?'El CSV no indica si está activo: confirma antes de importar':'Seleccionar '+r.call;
+  input.checked=rbSelected.has(r.key);input.disabled=!rbCanChoose(r);input.title=input.disabled?'Este repetidor no está disponible para importar':'Seleccionar '+r.call;
   input.setAttribute('aria-label','Seleccionar '+r.call);input.addEventListener('change',()=>{if(input.checked)rbSelected.add(r.key);else rbSelected.delete(r.key);rbUpdateControls()});td.append(input);tr.append(td);
   cell(r.kind==='rb'?'Repetidor':r.kind==='pmr'?'PMR446':'Satélite/ISS');cell(r.call);cell((r.kind==='rb'&&r.district?'EA'+r.district+' · ':'')+(r.place||'—'));
   cell(r.rx.toFixed(5));cell(r.tx==null?'RX únicamente':r.tx.toFixed(5));cell(r.tone==null?'—':String(r.tone));
   const state=document.createElement('td');state.textContent=r.status;state.className=r.kind==='rb'&&!r.confirmed?'rb-unknown':'rb-safe';tr.append(state);body.append(tr);
  }
  if(!all.length){const tr=document.createElement('tr');const td=document.createElement('td');td.colSpan=8;td.textContent='No hay candidatos con estos filtros. Marca VHF/UHF, Satélites o PMR.';tr.append(td);body.append(tr)}
- rbById('rbCounts').textContent=all.length+' visibles · '+[...rbSelected].filter(k=>rbEligibleRecords().some(r=>r.key===k&&rbCanChoose(r))).length+' seleccionados válidos';
  rbUpdateControls();
 }
 function rbUpdateControls(){
  const visible=rbVisibleRecords().slice(0,400).filter(rbCanChoose);
- rbById('rbApplyImport').disabled=!rbEligibleRecords().some(r=>rbSelected.has(r.key)&&rbCanChoose(r));
+ const chosen=rbEligibleRecords().filter(r=>rbSelected.has(r.key)&&rbCanChoose(r));
+ rbById('rbCounts').textContent=rbVisibleRecords().length+' visibles · '+chosen.length+' seleccionados';
+ rbById('rbApplyImport').disabled=chosen.length===0;
+ rbById('rbSelectionStatus').textContent=rbNeedsConfirmation(chosen)?'Selección preparada. Para añadir estos repetidores, marca «He comprobado que los repetidores que voy a importar están operativos».':'';
  rbById('rbSelectVisible').checked=visible.length>0&&visible.every(r=>rbSelected.has(r.key));
+ rbById('rbSelectVisible').indeterminate=visible.some(r=>rbSelected.has(r.key))&&!rbById('rbSelectVisible').checked;
  rbById('rbSelectVisible').disabled=visible.length===0;
 }
 function rbLoadText(t,label){
@@ -2990,6 +2996,11 @@ function rbShowNamesOnRadio(){
 }
 function rbAddSelected(){
  const chosen=rbEligibleRecords().filter(r=>rbSelected.has(r.key)&&rbCanChoose(r));if(!chosen.length)return;
+ if(rbNeedsConfirmation(chosen)){
+  rbUpdateControls();
+  const confirmation=rbById('rbConfirmFiltered');confirmation.focus();confirmation.scrollIntoView({behavior:'smooth',block:'center'});
+  return;
+ }
  if(rows.size===0&&rbById('rbSeedPresets').checked){
   const cells=parseCSV(PRESET_CSV),headers=chooseCSVHeader(cells),parsed=importCSV(cells,headers.row+1,headers.mapping,false);
   if(parsed.issues.length)throw Error('No se puede preparar la plantilla de 42: '+parsed.issues[0]);
