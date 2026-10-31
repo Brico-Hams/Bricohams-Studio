@@ -433,10 +433,10 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 <div class="panel"><h2>Seguridad</h2><p>Solo se cambian los ajustes modificados en esta pestaña. La grabación se hace sobre la imagen de memoria <b>recién leída</b> y guardada como copia BIN, conservando el resto de campos y los canales. La escritura verifica cada bloque leyéndolo de nuevo.</p>
 <div class="notice">⚠️ Esta función está derivada de los controladores CHIRP aportados, pero la conexión y escritura no se han comprobado con un walkie físico. La radio podría perder su configuración si se interrumpe la operación. Conserva el archivo BIN original y, si puedes, otra copia hecha con CHIRP. No se modifica la calibración, ni los códigos de bloqueo remoto.</div></div>
 </section>
-<section id="tab-memorias"><div class="panel"><div class="rowbetween"><div><h2>Canales del walkie</h2><p class="small" style="margin:7px 0 0">Pulsa sobre una celda para cambiarla al instante (se guardará en la tabla, no en la radio). Edita hasta 1024 canales. CSV de CHIRP, Rigstudio o Excel. Catálogo de repetidores España integrado y 42 presets disponibles. Al pulsar Leer del walkie, los canales aparecen directamente en esta tabla editable, sin descargar archivos. Al subir cambios no se descargan archivos; la copia BIN es opcional desde Backup.</p></div><div class="flex"><button class="btn" id="btnPreset">◫ Cargar mis 42 canales</button><button class="btn" id="btnImport">↑ Importar CSV</button><button class="btn" id="rbOpenImporter" type="button">＋ Repetidores · Satélites · PMR</button><button class="btn primary" disabled="" id="channelsReadFromRadio" title="Conecta el walkie desde la barra superior" type="button">↻ Leer del walkie</button><button class="btn primary" id="btnAdd">＋ Añadir canal</button><button class="btn primary" disabled="" id="btnSubirCanalesTabla" title="Conecta y lee el walkie antes de subir" type="button">⇧ Subir canales</button></div></div>
+<section id="tab-memorias"><div class="panel"><div class="rowbetween"><div><h2>Canales del walkie</h2><p class="small" style="margin:7px 0 0">Pulsa sobre una celda para cambiarla al instante (se guardará en la tabla, no en la radio). Edita hasta 1024 canales. CSV de CHIRP, Rigstudio o Excel. Catálogo de repetidores España integrado y 42 presets disponibles. Al pulsar Leer del walkie, los canales aparecen directamente en esta tabla editable, sin descargar archivos. Al subir cambios no se descargan archivos; la copia BIN es opcional desde Backup.</p></div><div class="flex"><button class="btn" id="btnPreset">◫ Cargar mis 42 canales</button><button class="btn" id="btnImport">↑ Importar CSV</button><button class="btn" id="rbOpenImporter" type="button">＋ Catálogo de canales</button><button class="btn primary" disabled="" id="channelsReadFromRadio" title="Conecta el walkie desde la barra superior" type="button">↻ Leer del walkie</button><button class="btn primary" id="btnAdd">＋ Añadir canal</button><button class="btn primary" disabled="" id="btnSubirCanalesTabla" title="Conecta y lee el walkie antes de subir" type="button">⇧ Subir canales</button></div></div>
 <div class="small" id="channelsReadFromRadioStatus" role="status" style="margin:10px 0 4px">Conecta desde la barra superior para leer los canales del walkie.</div><div class="rb-import-container">
 <details class="rb-details" id="rbImportPanel">
-<summary><b>Catálogo España · Repetidores, satélites y PMR446</b> <span class="small">Selección individual · VHF · UHF · Satélites · PMR446</span></summary>
+<summary><b>Catálogo · Repetidores, satélites, PMR446, aéreos y marítimos</b> <span class="small">Selección individual o por grupos · Aéreos solo RX · Marítimos RX/TX</span></summary>
 <div class="rb-body">
 <div class="rb-sources">
 <div class="rb-source">
@@ -453,7 +453,9 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 <label><input checked="" id="rbBand2m" type="checkbox"/> Repetidores 2 m (144–148 MHz)</label>
 <label><input checked="" id="rbBand70" type="checkbox"/> Repetidores UHF / 70 cm (430–440 MHz)</label>
 <label><input id="rbSatellites" type="checkbox"/> Satélites, ISS y balizas de mis 42 presets (21)</label>
-<label><input id="rbPMR" type="checkbox"/> PMR446 de mis 42 presets (16, solo recepción)</label>
+<label><input id="rbPMR" type="checkbox"/> PMR446 de mis 42 presets (16, RX/TX)</label>
+<label><input id="rbAir" type="checkbox"/> Aéreos Murcia y Alicante · Corvera, San Javier y Alicante-Elche (23, AM, solo RX)</label>
+<label><input id="rbMarine" type="checkbox"/> Marítimos internacionales de voz (50, FM, RX/TX desde buque)</label>
 <label><input id="rbSeedPresets" type="checkbox"/> Si la tabla está vacía, cargar primero mis 42 presets completos</label>
 <label><input checked="" id="rbZoneLists" type="checkbox"/> Agrupar por distrito: canales ordenados de EA1 a EA9 y cada distrito en su lista de escaneo (EA1 → lista 1 … EA9 → lista 9)</label>
 <label><input checked="" id="rbShowNames" type="checkbox"/> Mostrar los nombres en la pantalla del walkie (ChDisp = Nombre; se guarda con «Guardar ajustes»)</label>
@@ -463,20 +465,23 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 <label>Nombre en la radio (10 caracteres) <select class="field" id="rbNameMode"><option value="call">Indicativo · ED5YAB</option><option value="place">Localidad · CARTAGENA</option><option value="both">Indicativo + localidad · ED5YAB CAR</option></select></label>
 </div>
 <label class="rb-confirm"><input id="rbConfirmFiltered" type="checkbox"/> He comprobado que los repetidores que voy a importar están operativos. Este CSV <b>no indica el estado</b> y no se puede comprobar automáticamente.</label>
-<p class="small">Se muestran solo repetidores con FM analógica en 2 m y 70 cm. El estado <b>activo</b> no se puede asegurar desde este CSV. Satélites, ISS, balizas y PMR446 se añaden con <b>TX bloqueada</b>; su actividad se debe verificar por separado.</p>
+<p class="small">Se muestran solo repetidores con FM analógica en 2 m y 70 cm. El estado <b>activo</b> no se puede asegurar desde este CSV. Los aéreos, satélites, ISS y balizas se añaden con <b>TX bloqueada</b>. Los marítimos se preparan en FM con RX/TX desde buque: en dúplex, RX es la costera y TX el buque. Los canales 15, 17, 75 y 76 se preparan a 1 W. PMR446 mantiene RX/TX como en los presets.</p>
 </div>
 </div>
+<p class="small">Aéreos: catálogo ENAIRE consultado el 31/10/2026. Se guarda la frecuencia real de recepción; el canal de 8,33 kHz publicado se conserva en la descripción. No es información operativa de navegación. Marítimos: solo voz analógica; se excluyen DSC/70, AIS, ASM y VDES. Transmitir requiere autorización y equipo adecuado; añadir el canal no habilita legalmente el walkie para ese servicio.</p>
 <div class="rb-selection-head">
 <label><span>Buscar por indicativo, provincia o frecuencia</span><input class="field" id="rbSearch" placeholder="Ej.: Murcia, ED5, 438.775…" type="search"/></label>
 <span class="small" id="rbCounts" role="status">Activa los filtros y carga un CSV o marca satélites.</span>
 </div>
-<div class="rb-tablewrap"><table class="rb-table"><thead><tr><th><input aria-label="Marcar todos los elementos visibles" id="rbSelectVisible" title="Seleccionar todos los elementos visibles" type="checkbox"/></th><th>Origen</th><th>Indicativo / nombre</th><th>Ubicación</th><th>RX (MHz)</th><th>TX (MHz)</th><th>Tono TX</th><th>Estado</th></tr></thead><tbody id="rbPreviewBody"></tbody></table></div>
+<div class="rb-tablewrap"><table class="rb-table"><thead><tr><th><input aria-label="Marcar todos los elementos visibles" id="rbSelectVisible" title="Seleccionar todos los elementos visibles" type="checkbox"/></th><th>Origen</th><th>Indicativo / nombre</th><th>Ubicación</th><th>RX (MHz)</th><th>TX (MHz)</th><th>Tono TX</th><th>Modo</th><th>Estado</th></tr></thead><tbody id="rbPreviewBody"></tbody></table></div>
 <div class="rb-import-actions">
 <button class="btn" id="rbNone" type="button">Desmarcar todos</button>
-<button class="btn primary" disabled="" id="rbApplyImport" type="button">＋ Añadir seleccionados a Canales</button>
-<span class="small" id="rbImportStatus" role="status">Se añaden sin sobrescribir canales; primero repetidores, después satélites y PMR.</span>
+<button aria-describedby="rbSelectionStatus" class="btn primary" disabled="" id="rbApplyImport" type="button">＋ Añadir seleccionados a Canales</button>
+<span class="small" id="rbSelectionStatus" role="status"></span>
+<span class="small" id="rbImportStatus" role="status">Se añaden sin sobrescribir canales: repetidores, satélites, PMR, aéreos y marítimos.</span>
 </div>
 <div class="small rb-attribution">Fuente del catálogo de repetidores: CSV facilitado por el usuario, exportado el 12/10/2026 de <a href="https://www.repeaterbook.com/row_repeaters/Display_SS.php?state_id=ES" target="_blank" rel="noopener noreferrer">RepeaterBook.com</a>. No hay actualización automática. <b>El CSV no incluye estado activo/inactivo.</b> Los 21 canales de satélites/ISS/balizas y los 16 PMR446 proceden de la plantilla de 42 presets. Verifica frecuencias y actividad antes de transmitir.</div>
+<div class="small rb-attribution">Aéreos: ENAIRE AIP AD 2.18 de <a href="https://aip.enaire.es/AIP/contenido_AIP/AD/AD2/LEMI/LE_AD_2_LEMI_es.html" target="_blank" rel="noopener noreferrer">Corvera (LEMI)</a>, <a href="https://aip.enaire.es/AIP/contenido_AIP/AD/AD2/LELC/LE_AD_2_LELC_es.html" target="_blank" rel="noopener noreferrer">San Javier (LELC)</a> y <a href="https://aip.enaire.es/AIP/contenido_AIP/AD/AD2/LEAL/LE_AD_2_LEAL_es.html" target="_blank" rel="noopener noreferrer">Alicante-Elche (LEAL)</a>. Conversión de canales: <a href="https://www.eurocontrol.int/sites/default/files/publication/files/201707-8.33-vcs-user-handbook%201.1.pdf" target="_blank" rel="noopener noreferrer">EUROCONTROL, anexo C</a>. Marítimos: <a href="https://www.navcen.uscg.gov/international-vhf-marine-radio-channels-freq" target="_blank" rel="noopener noreferrer">plan internacional UIT, apéndice 18</a> y <a href="https://docdb.cept.org/document/9681" target="_blank" rel="noopener noreferrer">ECC/DEC/(19)03</a>. Listas estáticas, sin actualización automática.</div>
 </div>
 </details>
 </div>
@@ -2914,10 +2919,56 @@ const rbPresetExtras=(()=>{
  }
  return out;
 })();
+// Fuentes: ENAIRE AIP AD 2.18 LEMI/LELC/LEAL; consulta 2026-10-31.
+// Los designadores C de 8,33 kHz NO son frecuencias: EUROCONTROL, anexo C.
+// Aquí todos los C publicados corresponden a la portadora de 25 kHz + 0,005 MHz.
+const rbAirChannels=[
+ ['MUR-TWR',121.325,'Murcia · Corvera (LEMI)','Torre · canal 121.330 C'],
+ ['MUR-GMC',121.750,'Murcia · Corvera (LEMI)','Rodaje · canal 121.755 C'],
+ ['SJV-APP',130.300,'Murcia · Corvera / San Javier (LEMI/LELC)','San Javier aproximación CIV/MIL'],
+ ['SJV-RES',125.025,'Murcia · Corvera / San Javier (LEMI/LELC)','Reserva aproximación / torre San Javier'],
+ ['SJV-TWR',124.425,'Murcia · San Javier (LELC)','Torre CIV/MIL'],
+ ['SJV-GMC',121.600,'Murcia · San Javier (LELC)','Rodaje'],
+ ['SJV-ATIS',128.600,'Murcia · San Javier (LELC)','Información ATIS · canal 128.605 C'],
+ ['SJV-APPM',398.325,'Murcia · San Javier (LELC)','Aproximación militar UHF'],
+ ['SJV-MIL1',139.300,'Murcia · San Javier (LELC)','Torre militar VHF'],
+ ['SJV-MIL2',143.675,'Murcia · San Javier (LELC)','Torre militar VHF'],
+ ['SJV-GMCM',278.575,'Murcia · San Javier (LELC)','Rodaje militar UHF'],
+ ['ALC-TWR',118.150,'Alicante · Alicante-Elche (LEAL)','Torre · canal 118.155 C'],
+ ['ALC-CLR',119.850,'Alicante · Alicante-Elche (LEAL)','Autorizaciones · canal 119.855 C'],
+ ['ALC-GMC',130.650,'Alicante · Alicante-Elche (LEAL)','Rodaje · canal 130.655 C'],
+ ['ALC-ATIS',120.075,'Alicante · Alicante-Elche (LEAL)','Información ATIS · canal 120.080 C'],
+ ['ALC-RES',125.175,'Alicante · Alicante-Elche (LEAL)','Reserva torre · canal 125.180 C'],
+ ['ALC-APPI',118.800,'Alicante · Alicante-Elche (LEAL)','Valencia Control aproximación APP/I'],
+ ['ALC-APPH',120.400,'Alicante · Alicante-Elche (LEAL)','Valencia Control aproximación APP/H'],
+ ['ALC-APPR',119.075,'Alicante · Alicante-Elche (LEAL)','Valencia Control aproximación reserva'],
+ ['ALC-MIL',122.100,'Alicante · Alicante-Elche (LEAL)','Torre militar VHF'],
+ ['AL-SJ-MIL',257.800,'Alicante-Elche / San Javier (LEAL/LELC)','Torre militar UHF compartida'],
+ ['AER-EMERG',121.500,'Murcia / Alicante','Emergencia aeronáutica VHF · publicada en LEMI, LELC y LEAL'],
+ ['AER-EMGM',243.000,'Murcia / Alicante','Emergencia aeronáutica UHF · publicada en LEMI, LELC y LEAL']
+].map(([name,rx,place,service])=>({key:'air|'+name,kind:'air',call:name,name,place:place+' · '+service,rx,tx:null,txLocked:true,tone:null,mode:'AM',status:'Solo recepción · AM',comment:'ENAIRE AIP AD 2.18 · '+place+' · '+service+' · RX real '+rx.toFixed(5)+' MHz · TX bloqueada · consulta 2026-10-31'}));
+// Plan internacional de VOZ (UIT AP18 y ECC/DEC/(19)03), perspectiva del buque.
+// Se omiten 24/25/26/84/85/86 (VDES), 70 (DSC) y AIS/ASM.
+// 27/28 se sustituyen por 1027/1028 simplex; 87/88 también son simplex.
+const rbMarineChannels=(()=>{
+ const out=[],uses={6:'Búsqueda y salvamento',8:'Entre buques',9:'Llamada / operaciones portuarias',13:'Seguridad de la navegación',15:'Comunicaciones a bordo · máximo 1 W',16:'Socorro, seguridad y llamada',17:'Comunicaciones a bordo · máximo 1 W',67:'Seguridad de la navegación',72:'Entre buques',75:'Navegación · máximo 1 W',76:'Navegación · máximo 1 W',77:'Entre buques'};
+ function add(channel,shipKhz,duplex){
+  const label=String(channel).padStart(2,'0'),name='MAR-'+label,tx=shipKhz/1000,rx=(shipKhz+(duplex?4600:0))/1000,lowPower=[15,17,75,76].includes(channel);
+  const usage=uses[channel]||'Operaciones marítimas / portuarias';
+  out.push({key:'marine|'+label,kind:'marine',call:name,name,place:'Canal '+label+' · '+usage,rx,tx,txLocked:false,tone:null,mode:'FM',power:lowPower?5:7,status:'RX/TX · '+(duplex?'dúplex buque':'simplex')+(lowPower?' · 1 W':''),comment:'Marítimo internacional · canal '+label+' · '+usage+' · '+(duplex?'RX costera / TX buque':'simplex')+' · UIT AP18 / ECC(19)03 · consulta 2026-10-31'});
+ }
+ for(let n=1;n<=23;n++)add(n,156000+n*50,n<=5||n===7||n>=18);
+ for(let n=60;n<=83;n++){if(n!==70)add(n,156025+(n-60)*50,n<=66||n>=78)}
+ add(87,157375,false);add(88,157425,false);add(1027,157350,false);add(1028,157400,false);
+ return out.sort((a,b)=>Number(a.name.slice(4))-Number(b.name.slice(4)));
+})();
+const RB_KIND_LABELS={rb:'Repetidor',sat:'Satélite/ISS',pmr:'PMR446',air:'Aéreo',marine:'Marítimo'};
 function rbLockPresetRx(map){
  for(const [id,ch] of map){if(/^PMR-/.test(ch.name))map.set(id,{...ch,tx:ch.rx,txLocked:false});else if(/^(SAT-|ISS-|M-)/.test(ch.name))map.set(id,{...ch,tx:null,txLocked:true})}
 }
-function rbCanChoose(r){return r.kind!=='rb'||r.confirmed||(r.unknown&&rbById('rbConfirmFiltered').checked)}
+// La selección es independiente de la confirmación de actividad; se comprueba al importar.
+function rbCanChoose(r){return r.kind!=='rb'||r.confirmed||r.unknown}
+function rbNeedsConfirmation(chosen){return !rbById('rbConfirmFiltered').checked&&chosen.some(r=>r.kind==='rb'&&r.unknown&&!r.confirmed)}
 // Distritos radioaficionados de España: el dígito del indicativo (ED5…, EA5…) indica la zona.
 const RB_DISTRICTS={1:'EA1 · Galicia, Asturias, Cantabria y Castilla y León',2:'EA2 · País Vasco, Navarra, La Rioja y Aragón',3:'EA3 · Cataluña',4:'EA4 · Madrid, Castilla-La Mancha y Extremadura',5:'EA5 · C. Valenciana, Murcia y Albacete',6:'EA6 · Baleares',7:'EA7 · Andalucía',8:'EA8 · Canarias',9:'EA9 · Ceuta y Melilla'};
 rbById('rbZone').append(...Object.entries(RB_DISTRICTS).map(([d,label])=>new Option(label,d)),new Option('Sin distrito reconocible','0'));
@@ -2934,7 +2985,8 @@ function rbEligibleRecords(){
  const repeaters=rbRecords.filter(r=>(r.band==='2m'&&use2||r.band==='70cm'&&use70)&&(r.confirmed||r.unknown));
  const sats=rbById('rbSatellites').checked?rbPresetExtras.filter(r=>r.kind==='sat'):[];
  const pmrs=rbById('rbPMR').checked?rbPresetExtras.filter(r=>r.kind==='pmr'):[];
- return [...repeaters,...sats,...pmrs];
+ const air=rbById('rbAir').checked?rbAirChannels:[],marine=rbById('rbMarine').checked?rbMarineChannels:[];
+ return [...repeaters,...sats,...pmrs,...air,...marine];
 }
 function rbVisibleRecords(){const q=rbNorm(rbById('rbSearch').value),z=rbById('rbZone').value;return rbEligibleRecords().filter(r=>(!z||r.kind!=='rb'||String(r.district||0)===z)&&(!q||rbNorm([r.call,r.place,r.name,r.rx,r.comment,r.district?'EA'+r.district:''].join(' ')).includes(q)));}
 function rbPaint(){
@@ -2942,20 +2994,23 @@ function rbPaint(){
  for(const r of all.slice(0,400)){
   const tr=document.createElement('tr');const cell=value=>{const td=document.createElement('td');td.textContent=value;tr.append(td)};
   const td=document.createElement('td');const input=document.createElement('input');input.type='checkbox';
-  input.checked=rbSelected.has(r.key);input.disabled=!rbCanChoose(r);input.title=input.disabled?'El CSV no indica si está activo: confirma antes de importar':'Seleccionar '+r.call;
+  input.checked=rbSelected.has(r.key);input.disabled=!rbCanChoose(r);input.title=input.disabled?'Este repetidor no está disponible para importar':'Seleccionar '+r.call;
   input.setAttribute('aria-label','Seleccionar '+r.call);input.addEventListener('change',()=>{if(input.checked)rbSelected.add(r.key);else rbSelected.delete(r.key);rbUpdateControls()});td.append(input);tr.append(td);
-  cell(r.kind==='rb'?'Repetidor':r.kind==='pmr'?'PMR446':'Satélite/ISS');cell(r.call);cell((r.kind==='rb'&&r.district?'EA'+r.district+' · ':'')+(r.place||'—'));
-  cell(r.rx.toFixed(5));cell(r.tx==null?'RX únicamente':r.tx.toFixed(5));cell(r.tone==null?'—':String(r.tone));
+  cell(RB_KIND_LABELS[r.kind]);cell(r.call);cell((r.kind==='rb'&&r.district?'EA'+r.district+' · ':'')+(r.place||'—'));
+  cell(r.rx.toFixed(5));cell(r.tx==null?'RX únicamente':r.tx.toFixed(5));cell(r.tone==null?'—':String(r.tone));cell(r.kind==='rb'?'FM':r.mode||'NFM');
   const state=document.createElement('td');state.textContent=r.status;state.className=r.kind==='rb'&&!r.confirmed?'rb-unknown':'rb-safe';tr.append(state);body.append(tr);
  }
- if(!all.length){const tr=document.createElement('tr');const td=document.createElement('td');td.colSpan=8;td.textContent='No hay candidatos con estos filtros. Marca VHF/UHF, Satélites o PMR.';tr.append(td);body.append(tr)}
- rbById('rbCounts').textContent=all.length+' visibles · '+[...rbSelected].filter(k=>rbEligibleRecords().some(r=>r.key===k&&rbCanChoose(r))).length+' seleccionados válidos';
+ if(!all.length){const tr=document.createElement('tr');const td=document.createElement('td');td.colSpan=9;td.textContent='No hay candidatos con estos filtros. Marca repetidores, satélites, PMR, aéreos o marítimos.';tr.append(td);body.append(tr)}
  rbUpdateControls();
 }
 function rbUpdateControls(){
  const visible=rbVisibleRecords().slice(0,400).filter(rbCanChoose);
- rbById('rbApplyImport').disabled=!rbEligibleRecords().some(r=>rbSelected.has(r.key)&&rbCanChoose(r));
+ const chosen=rbEligibleRecords().filter(r=>rbSelected.has(r.key)&&rbCanChoose(r));
+ rbById('rbCounts').textContent=rbVisibleRecords().length+' visibles · '+chosen.length+' seleccionados';
+ rbById('rbApplyImport').disabled=chosen.length===0;
+ rbById('rbSelectionStatus').textContent=rbNeedsConfirmation(chosen)?'Selección preparada. Para añadir estos repetidores, marca «He comprobado que los repetidores que voy a importar están operativos».':'';
  rbById('rbSelectVisible').checked=visible.length>0&&visible.every(r=>rbSelected.has(r.key));
+ rbById('rbSelectVisible').indeterminate=visible.some(r=>rbSelected.has(r.key))&&!rbById('rbSelectVisible').checked;
  rbById('rbSelectVisible').disabled=visible.length===0;
 }
 function rbLoadText(t,label){
@@ -2990,14 +3045,19 @@ function rbShowNamesOnRadio(){
 }
 function rbAddSelected(){
  const chosen=rbEligibleRecords().filter(r=>rbSelected.has(r.key)&&rbCanChoose(r));if(!chosen.length)return;
+ if(rbNeedsConfirmation(chosen)){
+  rbUpdateControls();
+  const confirmation=rbById('rbConfirmFiltered');confirmation.focus();confirmation.scrollIntoView({behavior:'smooth',block:'center'});
+  return;
+ }
  if(rows.size===0&&rbById('rbSeedPresets').checked){
   const cells=parseCSV(PRESET_CSV),headers=chooseCSVHeader(cells),parsed=importCSV(cells,headers.row+1,headers.mapping,false);
   if(parsed.issues.length)throw Error('No se puede preparar la plantilla de 42: '+parsed.issues[0]);
   rows=new Map(parsed.incoming);rbLockPresetRx(rows);
  }
- const order={rb:0,sat:1,pmr:2},grouped=rbById('rbZoneLists').checked,nameMode=rbById('rbNameMode').value;
+ const order={rb:0,sat:1,pmr:2,air:3,marine:4},grouped=rbById('rbZoneLists').checked,nameMode=rbById('rbNameMode').value;
  chosen.sort((a,b)=>order[a.kind]-order[b.kind]||(grouped&&a.kind==='rb'?(a.district||99)-(b.district||99)||a.band.localeCompare(b.band)||String(a.place).localeCompare(String(b.place),'es'):0));
- let added=0,dupes=0,full=0,rbCount=0,satCount=0,pmrCount=0;
+ let added=0,dupes=0,full=0;const counts={rb:0,sat:0,pmr:0,air:0,marine:0};
  for(const item of chosen){
   const existing=[...rows.values()].some(r=>{
    if(item.kind!=='rb')return r.name===item.name&&Math.abs(r.rx-item.rx)<.000005;
@@ -3008,15 +3068,15 @@ function rbAddSelected(){
   if(existing){dupes++;continue}
   if(rows.size>=NUM_RADIO_CHANNELS){full++;continue}
   let slot=1;while(rows.has(slot)&&slot<=NUM_RADIO_CHANNELS)slot++;
-  const ch={id:slot,name:item.kind==='rb'?rbRadioName(item,nameMode):item.name,list:grouped&&item.kind==='rb'&&item.district?item.district:null,rx:item.rx,tx:item.kind==='rb'?item.tx:null,
-   txLocked:item.kind==='sat'||(item.kind==='rb'&&item.tx==null),
-   mode:item.kind==='rb'?'FM':item.mode||'NFM',power:7,toneTx:item.kind==='rb'?item.tone??null:null,toneRx:null,
+  const ch={id:slot,name:item.kind==='rb'?rbRadioName(item,nameMode):item.name,list:grouped&&item.kind==='rb'&&item.district?item.district:null,rx:item.rx,tx:item.kind==='rb'||item.kind==='marine'?item.tx:null,
+   txLocked:item.kind==='air'||item.kind==='sat'||(item.kind==='rb'&&item.tx==null),
+   mode:item.kind==='rb'?'FM':item.mode||'NFM',power:item.power??7,toneTx:item.kind==='rb'?item.tone??null:null,toneRx:null,
    scan:true,comment:item.comment};
   try{validRow(ch)}catch(err){console.warn('Registro omitido',item.call,err.message);full++;continue}
-  rows.set(slot,ch);deleted.delete(slot);added++;if(item.kind==='rb')rbCount++;else if(item.kind==='sat')satCount++;else pmrCount++;
+  rows.set(slot,ch);deleted.delete(slot);added++;counts[item.kind]++;
  }
  render();rbSelected.clear();rbPaint();
- const report=`Añadidos ${added}: ${rbCount} repetidores, ${satCount} satélites/ISS, ${pmrCount} PMR446. Omitidos ${dupes} duplicados y ${full} sin espacio/no válidos.${grouped?' Repetidores ordenados por distrito, cada uno en la lista de escaneo de su distrito.':''}${rbShowNamesOnRadio()}`;
+ const report=`Añadidos ${added}: ${counts.rb} repetidores, ${counts.sat} satélites/ISS, ${counts.pmr} PMR446, ${counts.air} aéreos y ${counts.marine} marítimos. Omitidos ${dupes} duplicados y ${full} sin espacio/no válidos.${grouped?' Repetidores ordenados por distrito, cada uno en la lista de escaneo de su distrito.':''}${rbShowNamesOnRadio()}`;
  rbById('rbImportStatus').textContent=report;log('Catálogo: '+report);rbById('rbImportPanel').open=false;
 }
 function rbAllOrder(){return [...rows.values()].sort((a,b)=>a.id-b.id)}
@@ -3049,7 +3109,7 @@ rbTableBody.addEventListener('dragend',()=>{rbDraggingId=null;rbTableBody.queryS
 rbById('rbOpenImporter').onclick=()=>{const d=rbById('rbImportPanel');d.open=!d.open;if(d.open)d.scrollIntoView({behavior:'smooth',block:'nearest'})};
 rbById('rbCsvUpload').addEventListener('change',e=>{rbCsvLoad(e.target.files[0]);e.target.value=''});
 rbById('rbRestoreBuiltIn').addEventListener('click',()=>{try{rbLoadText(rbById('rbSpainCsvIntegrated').textContent,'Lista España integrada · 12/10/2026')}catch(e){rbById('rbFileStatus').textContent='Error: '+e.message}});
-for(const id of ['rbBand2m','rbBand70','rbSatellites','rbPMR','rbConfirmFiltered','rbZone'])rbById(id).addEventListener('change',rbPaint);
+for(const id of ['rbBand2m','rbBand70','rbSatellites','rbPMR','rbAir','rbMarine','rbConfirmFiltered','rbZone'])rbById(id).addEventListener('change',rbPaint);
 rbById('rbSearch').addEventListener('input',rbPaint);
 rbById('rbSelectVisible').addEventListener('change',e=>{rbVisibleRecords().slice(0,400).filter(rbCanChoose).forEach(r=>e.target.checked?rbSelected.add(r.key):rbSelected.delete(r.key));rbPaint()});
 rbById('rbNone').addEventListener('click',()=>{rbSelected.clear();rbPaint()});

@@ -78,6 +78,25 @@ Apaga la radio. Después, mantén pulsado **PTT** al encenderla para entrar en m
 
 **Encontrar un archivo `.bin` o poder seleccionarlo no garantiza compatibilidad.** El flasheo está implementado de manera experimental y su uso puede necesitar recuperación manual del dispositivo.
 
+## Catálogo de canales
+
+En **Canales → Catálogo de canales** puedes activar cada grupo, buscar por nombre o frecuencia, seleccionar filas individualmente o usar la casilla de la cabecera y pulsar **Añadir seleccionados a Canales**. Se usan las posiciones libres y se omiten los duplicados sin sobrescribir las memorias existentes. Los repetidores sin estado publicado requieren confirmar su actividad antes de importarlos; puedes seleccionarlos antes de marcar esa confirmación.
+
+| Grupo nuevo | Contenido | Modo y transmisión |
+| --- | --- | --- |
+| Aéreos Murcia y Alicante | 23 frecuencias de Corvera, San Javier y Alicante-Elche: torre, rodaje, aproximación, reserva, ATIS y servicios militares/emergencia publicados. Las frecuencias compartidas se incluyen una vez. | AM, TX bloqueada. |
+| Marítimos internacionales de voz | 50 canales: 01–23, 60–69, 71–83, 87, 88, 1027 y 1028. | FM, RX/TX desde buque. En dúplex, RX es la frecuencia costera y TX la del buque. Los canales 15, 17, 75 y 76 se preparan con el nivel de potencia de 1 W. |
+
+La tabla de selección muestra el modo, RX, TX y estado de cada canal. El catálogo aéreo guarda la **frecuencia real de recepción**, no el designador del canal de 8,33 kHz: por ejemplo, Alicante TWR `118.155 C` corresponde a RX `118.15000 MHz`. El designador publicado se conserva en la descripción. El bloqueo TX se conserva también al exportar CSV y codificar la memoria de la radio.
+
+Los marítimos excluyen DSC/canal 70, AIS, ASM y los canales VDES 24/25/26/84/85/86; 1027/1028 sustituyen a 27/28 en voz simplex. Añadir un canal con TX no acredita autorización ni convierte el walkie en equipo homologado para el servicio marítimo. Las listas son estáticas, consultadas el **31/10/2026**, y no sirven como información operativa de navegación ni sustituyen a AIP/NOTAM.
+
+Fuentes:
+
+- ENAIRE AIP AD 2.18: [Corvera (LEMI)](https://aip.enaire.es/AIP/contenido_AIP/AD/AD2/LEMI/LE_AD_2_LEMI_es.html), [San Javier (LELC)](https://aip.enaire.es/AIP/contenido_AIP/AD/AD2/LELC/LE_AD_2_LELC_es.html) y [Alicante-Elche (LEAL)](https://aip.enaire.es/AIP/contenido_AIP/AD/AD2/LEAL/LE_AD_2_LEAL_es.html).
+- [EUROCONTROL, 8.33 kHz VCS Handbook, anexo C](https://www.eurocontrol.int/sites/default/files/publication/files/201707-8.33-vcs-user-handbook%201.1.pdf): conversión de designador a frecuencia.
+- [Plan marítimo internacional UIT, apéndice 18, reproducido por USCG](https://www.navcen.uscg.gov/international-vhf-marine-radio-channels-freq) y [ECC/DEC/(19)03](https://docdb.cept.org/document/9681): canales y separación de voz/datos.
+
 ## 📻 Notas de configuración
 
 - **ChDisp → NAME**: muestra el nombre de memoria en lugar de la frecuencia cuando el walkie está en modo memoria (MR).
