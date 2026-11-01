@@ -80,7 +80,7 @@ Apaga la radio. Después, mantén pulsado **PTT** al encenderla para entrar en m
 
 ## Catálogo de canales
 
-En **Canales → Catálogo de canales** puedes activar cada grupo, buscar por nombre o frecuencia, seleccionar filas individualmente o usar la casilla de la cabecera y pulsar **Añadir seleccionados a Canales**. Se usan las posiciones libres y se omiten los duplicados sin sobrescribir las memorias existentes. Los repetidores sin estado publicado requieren confirmar su actividad antes de importarlos; puedes seleccionarlos antes de marcar esa confirmación.
+En **Canales → Catálogo de canales** puedes activar cada grupo, buscar por nombre o frecuencia, seleccionar filas individualmente o usar la casilla de la cabecera y pulsar **Añadir seleccionados a Canales**. Se usan las posiciones libres y se omiten los duplicados sin sobrescribir las memorias existentes. Los seleccionados se añaden directamente a la misma tabla editable que contiene los canales leídos del walkie. La tabla se muestra sin filtros y los nuevos canales aparecen resaltados. El estado de actividad de los repetidores sigue siendo informativo; no bloquea la incorporación a la tabla. Con una lectura compatible y la radio conectada, pulsa **Subir canales** para grabar la lista combinada. Añadir desde el catálogo no escribe en la radio.
 
 | Grupo nuevo | Contenido | Modo y transmisión |
 | --- | --- | --- |
