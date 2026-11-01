@@ -247,6 +247,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 .rb-checks select{width:100%;max-width:100%;box-sizing:border-box}
 .rb-table .rb-unknown{color:#e6c989;font-weight:600}
 .rb-table .rb-safe{color:#9edbd1}
+.rb-added-channel td{background:#153d33}
 .rb-table td input[type=checkbox]:disabled{opacity:.35;cursor:not-allowed}
 </style></head>
 <body>
@@ -464,7 +465,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 <label>Zona <select class="field" id="rbZone"><option value="">Todas las zonas</option></select></label>
 <label>Nombre en la radio (10 caracteres) <select class="field" id="rbNameMode"><option value="call">Indicativo · ED5YAB</option><option value="place">Localidad · CARTAGENA</option><option value="both">Indicativo + localidad · ED5YAB CAR</option></select></label>
 </div>
-<label class="rb-confirm"><input id="rbConfirmFiltered" type="checkbox"/> He comprobado que los repetidores que voy a importar están operativos. Este CSV <b>no indica el estado</b> y no se puede comprobar automáticamente.</label>
+<p class="small">El CSV <b>no indica si los repetidores están operativos</b>. Puedes añadirlos a la tabla; comprueba su actividad antes de utilizarlos.</p>
 <p class="small">Se muestran solo repetidores con FM analógica en 2 m y 70 cm. El estado <b>activo</b> no se puede asegurar desde este CSV. Los aéreos, satélites, ISS y balizas se añaden con <b>TX bloqueada</b>. Los marítimos se preparan en FM con RX/TX desde buque: en dúplex, RX es la costera y TX el buque. Los canales 15, 17, 75 y 76 se preparan a 1 W. PMR446 mantiene RX/TX como en los presets.</p>
 </div>
 </div>
@@ -2966,9 +2967,8 @@ const RB_KIND_LABELS={rb:'Repetidor',sat:'Satélite/ISS',pmr:'PMR446',air:'Aére
 function rbLockPresetRx(map){
  for(const [id,ch] of map){if(/^PMR-/.test(ch.name))map.set(id,{...ch,tx:ch.rx,txLocked:false});else if(/^(SAT-|ISS-|M-)/.test(ch.name))map.set(id,{...ch,tx:null,txLocked:true})}
 }
-// La selección es independiente de la confirmación de actividad; se comprueba al importar.
+// El catálogo se añade a la misma tabla editable que contiene la lectura del walkie.
 function rbCanChoose(r){return r.kind!=='rb'||r.confirmed||r.unknown}
-function rbNeedsConfirmation(chosen){return !rbById('rbConfirmFiltered').checked&&chosen.some(r=>r.kind==='rb'&&r.unknown&&!r.confirmed)}
 // Distritos radioaficionados de España: el dígito del indicativo (ED5…, EA5…) indica la zona.
 const RB_DISTRICTS={1:'EA1 · Galicia, Asturias, Cantabria y Castilla y León',2:'EA2 · País Vasco, Navarra, La Rioja y Aragón',3:'EA3 · Cataluña',4:'EA4 · Madrid, Castilla-La Mancha y Extremadura',5:'EA5 · C. Valenciana, Murcia y Albacete',6:'EA6 · Baleares',7:'EA7 · Andalucía',8:'EA8 · Canarias',9:'EA9 · Ceuta y Melilla'};
 rbById('rbZone').append(...Object.entries(RB_DISTRICTS).map(([d,label])=>new Option(label,d)),new Option('Sin distrito reconocible','0'));
@@ -3008,7 +3008,7 @@ function rbUpdateControls(){
  const chosen=rbEligibleRecords().filter(r=>rbSelected.has(r.key)&&rbCanChoose(r));
  rbById('rbCounts').textContent=rbVisibleRecords().length+' visibles · '+chosen.length+' seleccionados';
  rbById('rbApplyImport').disabled=chosen.length===0;
- rbById('rbSelectionStatus').textContent=rbNeedsConfirmation(chosen)?'Selección preparada. Para añadir estos repetidores, marca «He comprobado que los repetidores que voy a importar están operativos».':'';
+ rbById('rbSelectionStatus').textContent=chosen.length?'Se añadirán a la tabla de Canales, conservando los canales que ya contiene.':'';
  rbById('rbSelectVisible').checked=visible.length>0&&visible.every(r=>rbSelected.has(r.key));
  rbById('rbSelectVisible').indeterminate=visible.some(r=>rbSelected.has(r.key))&&!rbById('rbSelectVisible').checked;
  rbById('rbSelectVisible').disabled=visible.length===0;
@@ -3024,10 +3024,10 @@ function rbLoadText(t,label){
  const hasStatus=headers.some(x=>['status','operationalstatus','onair','operatingstatus','activo','estado','situacion','operativo'].includes(rbNorm(x)));
  rbMissingStatus=!hasStatus;
  rbRecords=parsed.slice(start+1).map((cells,i)=>rbCSVRecord(cells,headers,i)).filter(Boolean);
- rbSelected.clear();rbById('rbConfirmFiltered').checked=false;
+ rbSelected.clear();
  const a=rbRecords.filter(r=>r.band==='2m').length,b=rbRecords.filter(r=>r.band==='70cm').length;
  const active=rbRecords.filter(r=>r.confirmed).length;
- rbById('rbFileStatus').textContent=label+' · '+a+' VHF / 2 m · '+b+' UHF / 70 cm. '+(hasStatus?active+' activos confirmados en el CSV; el resto se excluye.':'ATENCIÓN: el archivo no tiene columna de actividad; comprueba el estado y marca la confirmación para importar repetidores.');
+ rbById('rbFileStatus').textContent=label+' · '+a+' VHF / 2 m · '+b+' UHF / 70 cm. '+(hasStatus?active+' activos confirmados en el CSV; el resto se excluye.':'ATENCIÓN: el archivo no tiene columna de actividad; puedes añadir los canales a la tabla, pero debes comprobar su actividad antes de utilizarlos.');
  rbPaint();
 }
 function rbCsvLoad(file){
@@ -3045,11 +3045,6 @@ function rbShowNamesOnRadio(){
 }
 function rbAddSelected(){
  const chosen=rbEligibleRecords().filter(r=>rbSelected.has(r.key)&&rbCanChoose(r));if(!chosen.length)return;
- if(rbNeedsConfirmation(chosen)){
-  rbUpdateControls();
-  const confirmation=rbById('rbConfirmFiltered');confirmation.focus();confirmation.scrollIntoView({behavior:'smooth',block:'center'});
-  return;
- }
  if(rows.size===0&&rbById('rbSeedPresets').checked){
   const cells=parseCSV(PRESET_CSV),headers=chooseCSVHeader(cells),parsed=importCSV(cells,headers.row+1,headers.mapping,false);
   if(parsed.issues.length)throw Error('No se puede preparar la plantilla de 42: '+parsed.issues[0]);
@@ -3057,7 +3052,7 @@ function rbAddSelected(){
  }
  const order={rb:0,sat:1,pmr:2,air:3,marine:4},grouped=rbById('rbZoneLists').checked,nameMode=rbById('rbNameMode').value;
  chosen.sort((a,b)=>order[a.kind]-order[b.kind]||(grouped&&a.kind==='rb'?(a.district||99)-(b.district||99)||a.band.localeCompare(b.band)||String(a.place).localeCompare(String(b.place),'es'):0));
- let added=0,dupes=0,full=0;const counts={rb:0,sat:0,pmr:0,air:0,marine:0};
+ let added=0,dupes=0,full=0;const addedIds=[];const counts={rb:0,sat:0,pmr:0,air:0,marine:0};
  for(const item of chosen){
   const existing=[...rows.values()].some(r=>{
    if(item.kind!=='rb')return r.name===item.name&&Math.abs(r.rx-item.rx)<.000005;
@@ -3073,11 +3068,20 @@ function rbAddSelected(){
    mode:item.kind==='rb'?'FM':item.mode||'NFM',power:item.power??7,toneTx:item.kind==='rb'?item.tone??null:null,toneRx:null,
    scan:true,comment:item.comment};
   try{validRow(ch)}catch(err){console.warn('Registro omitido',item.call,err.message);full++;continue}
-  rows.set(slot,ch);deleted.delete(slot);added++;counts[item.kind]++;
+  rows.set(slot,ch);deleted.delete(slot);addedIds.push(slot);added++;counts[item.kind]++;
  }
+ // Los filtros de la tabla no deben ocultar los canales recién añadidos.
+ rbById('search').value='';rbById('filter').value='all';
  render();rbSelected.clear();rbPaint();
  const report=`Añadidos ${added}: ${counts.rb} repetidores, ${counts.sat} satélites/ISS, ${counts.pmr} PMR446, ${counts.air} aéreos y ${counts.marine} marítimos. Omitidos ${dupes} duplicados y ${full} sin espacio/no válidos.${grouped?' Repetidores ordenados por distrito, cada uno en la lista de escaneo de su distrito.':''}${rbShowNamesOnRadio()}`;
  rbById('rbImportStatus').textContent=report;log('Catálogo: '+report);rbById('rbImportPanel').open=false;
+ showTab('memorias');
+ const upload=rbById('btnSubirCanalesTabla');
+ rbById('channelsReadFromRadioStatus').textContent=report+' Ya están en la tabla de Canales. '+(upload.disabled?'Conecta y lee el walkie para preparar la subida; conserva esta tabla cuando se te pregunte.':'Pulsa «Subir canales» para enviarlos al walkie.')+' Aún no se ha escrito nada en la radio.';
+ for(const id of addedIds)rbById('tableBody').querySelector('tr[data-channel-id="'+id+'"]')?.classList.add('rb-added-channel');
+ const first=addedIds.length?rbById('tableBody').querySelector('tr[data-channel-id="'+addedIds[0]+'"]'):null;
+ (first||rbById('tableBody')).scrollIntoView({behavior:'smooth',block:'center'});
+ first?.querySelector('.cell-edit')?.focus({preventScroll:true});
 }
 function rbAllOrder(){return [...rows.values()].sort((a,b)=>a.id-b.id)}
 function rbCanReorder(){return rbById('search').value.trim()===''&&rbById('filter').value==='all'}
@@ -3109,7 +3113,7 @@ rbTableBody.addEventListener('dragend',()=>{rbDraggingId=null;rbTableBody.queryS
 rbById('rbOpenImporter').onclick=()=>{const d=rbById('rbImportPanel');d.open=!d.open;if(d.open)d.scrollIntoView({behavior:'smooth',block:'nearest'})};
 rbById('rbCsvUpload').addEventListener('change',e=>{rbCsvLoad(e.target.files[0]);e.target.value=''});
 rbById('rbRestoreBuiltIn').addEventListener('click',()=>{try{rbLoadText(rbById('rbSpainCsvIntegrated').textContent,'Lista España integrada · 12/10/2026')}catch(e){rbById('rbFileStatus').textContent='Error: '+e.message}});
-for(const id of ['rbBand2m','rbBand70','rbSatellites','rbPMR','rbAir','rbMarine','rbConfirmFiltered','rbZone'])rbById(id).addEventListener('change',rbPaint);
+for(const id of ['rbBand2m','rbBand70','rbSatellites','rbPMR','rbAir','rbMarine','rbZone'])rbById(id).addEventListener('change',rbPaint);
 rbById('rbSearch').addEventListener('input',rbPaint);
 rbById('rbSelectVisible').addEventListener('change',e=>{rbVisibleRecords().slice(0,400).filter(rbCanChoose).forEach(r=>e.target.checked?rbSelected.add(r.key):rbSelected.delete(r.key));rbPaint()});
 rbById('rbNone').addEventListener('click',()=>{rbSelected.clear();rbPaint()});
