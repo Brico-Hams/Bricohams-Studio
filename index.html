@@ -2,11 +2,42 @@
 
 <html lang="es">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="light dark" name="color-scheme"/>
+<script>
+/* Apply the saved theme before first paint to avoid a flash; "system" leaves data-theme unset. */
+(function(){try{var t=localStorage.getItem('bricohams-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();
+</script>
 <title>BRICOHAMS QUANSHENG STUDIO 2.10 · Catálogo España integrado</title>
 <style>
-:root{color-scheme:dark;--bg:#0b101b;--panel:#151d2e;--panel2:#1c2639;--border:#2c3b50;--fg:#eaf2ff;--muted:#94a8c3;--aqua:#36dec1;--blue:#8bb9ff;--warn:#ffc46c;--danger:#ff8d9d;--shadow:0 16px 55px #03070d60}
-*{box-sizing:border-box}body{background:radial-gradient(ellipse at 78% -13%,#183958 0,transparent 39%),var(--bg);color:var(--fg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;margin:0}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:not-allowed}.layout{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;background:#111928c9;border-right:1px solid var(--border);padding:29px 17px;display:flex;flex-direction:column;gap:23px}.logo{display:flex;flex-direction:column;gap:10px;align-items:flex-start;padding:4px 9px;width:100%}.brandlogo{display:block;width:176px;max-width:100%;height:auto;border-radius:12px;box-shadow:0 10px 25px #00000035}.logotext{display:flex;flex-direction:column;gap:4px;width:100%}.logotop{font-weight:800;font-size:18px;letter-spacing:-.4px;line-height:1.1}.logosub{color:var(--muted);font-size:11px;letter-spacing:.8px;line-height:1.35;white-space:normal;word-break:break-word}.nav{display:grid;gap:7px}.nav button{background:none;border:1px solid transparent;border-radius:12px;text-align:left;padding:12px 13px;color:#aec0da;display:flex;align-items:center;gap:12px}.nav button.active{background:#1b3344;border-color:#2b636e;color:#9affeb}.nav button:hover:not(.active){background:#1e293a}.sidefoot{margin-top:auto;border-top:1px solid var(--border);padding:18px 8px 0;color:var(--muted);font-size:12px;line-height:1.7}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#75829a;margin-right:6px}.dot.ok{background:var(--aqua)}main{min-width:0;max-width:1720px;padding:34px clamp(20px,3.8vw,60px);width:100%}.eyebrow{font-size:11px;color:var(--aqua);text-transform:uppercase;letter-spacing:2px;font-weight:800}h1{font-size:clamp(28px,3vw,42px);line-height:1.12;letter-spacing:-1.3px;margin:10px 0}h2{margin:0;font-size:18px}h3{margin:0 0 10px;font-size:15px}p{line-height:1.62;color:#afbfda}.lead{margin:0 0 24px;max-width:850px}.top{display:flex;align-items:start;justify-content:space-between;gap:20px;flex-wrap:wrap}.chip{border:1px solid #3d626b;background:#1c3944;border-radius:25px;color:#91eee0;padding:8px 12px;font-size:12px;white-space:nowrap}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0}.stat{background:linear-gradient(155deg,#192539,#131b2a);border:1px solid var(--border);padding:20px;border-radius:17px}.stat strong{display:block;font-size:28px;letter-spacing:-1px;margin:4px 0}.small{font-size:12px;color:var(--muted)}.panel{background:#151e2dbf;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:21px;margin:18px 0}.flex{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.spacer{flex:1}.btn{background:#233247;border:1px solid #3b516c;color:#eaf2ff;border-radius:10px;padding:10px 15px;white-space:nowrap;font-weight:650;font-size:13px}.btn:hover:not(:disabled){background:#30415a}.btn.primary{background:#2ce1c2;border-color:#2ce1c2;color:#09221f}.btn.primary:hover{background:#7df0dd}.btn.danger{border-color:#65414c;color:#ffa9b5}.btn.ghost{background:transparent}.btn.sm{padding:6px 9px;font-size:12px}.toolbar{margin-top:17px}.field,select{background:#0e1725;color:var(--fg);border:1px solid #37495f;border-radius:9px;padding:10px 11px;min-width:0}select:focus,.field:focus{outline:2px solid #26bfa9;outline-offset:0}.search{min-width:220px;flex:1}.tablewrap{overflow:auto;max-height:60vh;border:1px solid var(--border);border-radius:11px;margin-top:16px}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:13px}thead{position:sticky;top:0;background:#1f2e43;z-index:1}th{text-transform:uppercase;font-size:10px;letter-spacing:1px;color:#b4c9e2;font-weight:800;text-align:left}th,td{padding:12px 13px;border-bottom:1px solid #29384c}tbody tr:hover{background:#202d40}td.freq{font-variant-numeric:tabular-nums;color:#dcf3ff;font-weight:650}td.off{color:#e6a4af}td .edit{padding:5px 8px}.badge{display:inline-flex;border-radius:20px;padding:4px 8px;background:#253747;color:#c0eaff;font-size:11px}.badge.rx{background:#3c2635;color:#ffbcc7}.empty{text-align:center;padding:42px 12px;color:#a9bed7}.empty strong{color:#e8f4ff;display:block;margin:0 0 10px}.notice{padding:13px 16px;border:1px solid #685438;background:#302a22;border-radius:12px;color:#ffdaac;font-size:13px;line-height:1.5;margin:16px 0}.notice.info{border-color:#365c6f;background:#182d40;color:#bdddf1}.notice.ok{border-color:#236859;background:#173a36;color:#b1f2df}label{color:#bacbe3;font-size:12px;font-weight:650}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:18px 0}.formgrid label{display:grid;gap:6px}.formgrid input,.formgrid select{width:100%}.panel p:first-child{margin-top:0}.muted{color:var(--muted)}.rowbetween{display:flex;justify-content:space-between;align-items:center;gap:12px}.hidden{display:none!important}.tabscontent>section{display:none}.tabscontent>section.active{display:block}.radio-status{display:flex;align-items:center;gap:15px;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:18px}.radio-status strong{font-weight:700}progress{width:100%;height:10px;accent-color:var(--aqua)}pre.log{height:215px;overflow:auto;background:#08111e;border:1px solid #294056;border-radius:10px;padding:14px;white-space:pre-wrap;font-size:12px;color:#b7e3d9;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;line-height:1.5}.check{display:flex;align-items:center;gap:10px;color:#d5e2f4;font-size:13px}.check input{accent-color:var(--aqua);width:17px;height:17px}dialog{border:1px solid #45566e;border-radius:18px;padding:0;box-shadow:0 35px 120px #000a;background:#161f2f;color:var(--fg);width:min(750px,calc(100vw - 24px));max-height:90vh;overflow:auto}dialog::backdrop{background:#010812d9}.modalhead{padding:22px 24px 10px;display:flex;justify-content:space-between;align-items:center}.modalbody{padding:0 24px 24px}.modalfoot{border-top:1px solid var(--border);padding:16px 24px;display:flex;justify-content:flex-end;gap:10px}.hint{font-size:12px;color:#9fb1c7}.col2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.labeltop{font-size:12px;color:#adc7d9;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin:20px 0 8px}.kbd{font-family:monospace;background:#1d3144;padding:2px 6px;border-radius:5px;color:#cce8ff}.footer{color:#7890ac;font-size:12px;margin:36px 0}a{color:#97d5ff}a:hover{color:white}input[type=file]{display:none}@media(max-width:950px){.layout{grid-template-columns:1fr}.side{position:static;height:auto;padding:14px 18px;gap:12px}.nav{display:flex;flex-wrap:wrap}.nav button{padding:9px}.sidefoot{display:none}main{padding:23px 16px}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:580px){.stats{grid-template-columns:1fr}.formgrid,.col2{grid-template-columns:1fr}.side .logo{padding:0}.nav{gap:4px}.nav button{font-size:12px}.panel{padding:15px}.btn{font-size:12px}} 
+/* BricoHams colour manual v1.1 (03-11-2026): official tokens. Light by default, dark via prefers-color-scheme or data-theme. */
+:root{
+color-scheme:light;
+--brand-ink:#23272B;--brand-orange:#F26B1D;--on-accent:#23272B;
+--bg:#FFFFFF;--surface:#F6F7F8;--text:#23272B;--text-muted:#59636B;--border:#DCE1E5;--link:#AA410B;--focus:#F26B1D;
+/* Derived UI tokens (not in the manual): neutral steps and functional status colours, all AA in this theme */
+--surface-2:#ECEFF2;--surface-hover:#E3E8EC;--border-strong:#B9C2C9;--accent-soft:#FDEADF;
+--ok:#1B6E3A;--ok-bg:#E7F5EC;--warn:#7A4A00;--warn-bg:#FFF3DD;--err:#A01F18;--err-bg:#FDEAEA;
+--shadow:0 6px 18px rgba(35,39,43,.10);--backdrop:rgba(35,39,43,.55);
+--logo-plate-bg:transparent;--logo-plate-pad:0;
+--font-ui:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+--font-display:Montserrat,Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+/* Legacy aliases so existing rules and JS (var(--fg), var(--aqua)...) keep working */
+--fg:var(--text);--muted:var(--text-muted);--panel:var(--surface);--panel2:var(--surface-2);--aqua:var(--brand-orange);--blue:var(--link);--danger:var(--err)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+color-scheme:dark;
+--bg:#111518;--surface:#1C2329;--text:#F6F8FA;--text-muted:#BAC4CC;--border:#38434C;--link:#FFA06A;--focus:#FFC18F;
+--surface-2:#242D35;--surface-hover:#2C3740;--border-strong:#4D5A65;--accent-soft:#3A2418;
+--ok:#7FE0A3;--ok-bg:#16301F;--warn:#FFC46C;--warn-bg:#3A2E14;--err:#FF9C9C;--err-bg:#3D1F22;
+--shadow:0 6px 18px rgba(0,0,0,.40);--backdrop:rgba(0,0,0,.72);
+--logo-plate-bg:#FFFFFF;--logo-plate-pad:6px}}
+:root[data-theme="dark"]{
+color-scheme:dark;
+--bg:#111518;--surface:#1C2329;--text:#F6F8FA;--text-muted:#BAC4CC;--border:#38434C;--link:#FFA06A;--focus:#FFC18F;
+--surface-2:#242D35;--surface-hover:#2C3740;--border-strong:#4D5A65;--accent-soft:#3A2418;
+--ok:#7FE0A3;--ok-bg:#16301F;--warn:#FFC46C;--warn-bg:#3A2E14;--err:#FF9C9C;--err-bg:#3D1F22;
+--shadow:0 6px 18px rgba(0,0,0,.40);--backdrop:rgba(0,0,0,.72);
+--logo-plate-bg:#FFFFFF;--logo-plate-pad:6px}
+*{box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:var(--font-ui);margin:0}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.42;cursor:not-allowed}.layout{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}.side{position:sticky;top:0;height:100vh;background:#111928c9;border-right:1px solid var(--border);padding:29px 17px;display:flex;flex-direction:column;gap:23px}.logo{display:flex;flex-direction:column;gap:10px;align-items:flex-start;padding:4px 9px;width:100%}.brandlogo{display:block;width:176px;max-width:100%;height:auto;border-radius:12px;box-shadow:0 10px 25px #00000035}.logotext{display:flex;flex-direction:column;gap:4px;width:100%}.logotop{font-weight:800;font-size:18px;letter-spacing:-.4px;line-height:1.1}.logosub{color:var(--muted);font-size:11px;letter-spacing:.8px;line-height:1.35;white-space:normal;word-break:break-word}.nav{display:grid;gap:7px}.nav button{background:none;border:1px solid transparent;border-radius:12px;text-align:left;padding:12px 13px;color:#aec0da;display:flex;align-items:center;gap:12px}.nav button.active{background:#1b3344;border-color:#2b636e;color:#9affeb}.nav button:hover:not(.active){background:#1e293a}.sidefoot{margin-top:auto;border-top:1px solid var(--border);padding:18px 8px 0;color:var(--muted);font-size:12px;line-height:1.7}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#75829a;margin-right:6px}.dot.ok{background:var(--aqua)}main{min-width:0;max-width:1720px;padding:34px clamp(20px,3.8vw,60px);width:100%}.eyebrow{font-size:11px;color:var(--aqua);text-transform:uppercase;letter-spacing:2px;font-weight:800}h1{font-size:clamp(28px,3vw,42px);line-height:1.12;letter-spacing:-1.3px;margin:10px 0}h2{margin:0;font-size:18px}h3{margin:0 0 10px;font-size:15px}p{line-height:1.62;color:#afbfda}.lead{margin:0 0 24px;max-width:850px}.top{display:flex;align-items:start;justify-content:space-between;gap:20px;flex-wrap:wrap}.chip{border:1px solid #3d626b;background:#1c3944;border-radius:25px;color:#91eee0;padding:8px 12px;font-size:12px;white-space:nowrap}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0}.stat{background:linear-gradient(155deg,#192539,#131b2a);border:1px solid var(--border);padding:20px;border-radius:17px}.stat strong{display:block;font-size:28px;letter-spacing:-1px;margin:4px 0}.small{font-size:12px;color:var(--muted)}.panel{background:#151e2dbf;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:21px;margin:18px 0}.flex{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.spacer{flex:1}.btn{background:#233247;border:1px solid #3b516c;color:#eaf2ff;border-radius:10px;padding:10px 15px;white-space:nowrap;font-weight:650;font-size:13px}.btn:hover:not(:disabled){background:#30415a}.btn.primary{background:#2ce1c2;border-color:#2ce1c2;color:#09221f}.btn.primary:hover{background:#7df0dd}.btn.danger{border-color:#65414c;color:#ffa9b5}.btn.ghost{background:transparent}.btn.sm{padding:6px 9px;font-size:12px}.toolbar{margin-top:17px}.field,select{background:#0e1725;color:var(--fg);border:1px solid #37495f;border-radius:9px;padding:10px 11px;min-width:0}select:focus,.field:focus{outline:2px solid #26bfa9;outline-offset:0}.search{min-width:220px;flex:1}.tablewrap{overflow:auto;max-height:60vh;border:1px solid var(--border);border-radius:11px;margin-top:16px}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:13px}thead{position:sticky;top:0;background:#1f2e43;z-index:1}th{text-transform:uppercase;font-size:10px;letter-spacing:1px;color:#b4c9e2;font-weight:800;text-align:left}th,td{padding:12px 13px;border-bottom:1px solid #29384c}tbody tr:hover{background:#202d40}td.freq{font-variant-numeric:tabular-nums;color:#dcf3ff;font-weight:650}td.off{color:#e6a4af}td .edit{padding:5px 8px}.badge{display:inline-flex;border-radius:20px;padding:4px 8px;background:#253747;color:#c0eaff;font-size:11px}.badge.rx{background:#3c2635;color:#ffbcc7}.empty{text-align:center;padding:42px 12px;color:#a9bed7}.empty strong{color:#e8f4ff;display:block;margin:0 0 10px}.notice{padding:13px 16px;border:1px solid #685438;background:#302a22;border-radius:12px;color:#ffdaac;font-size:13px;line-height:1.5;margin:16px 0}.notice.info{border-color:#365c6f;background:#182d40;color:#bdddf1}.notice.ok{border-color:#236859;background:#173a36;color:#b1f2df}label{color:#bacbe3;font-size:12px;font-weight:650}.formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:18px 0}.formgrid label{display:grid;gap:6px}.formgrid input,.formgrid select{width:100%}.panel p:first-child{margin-top:0}.muted{color:var(--muted)}.rowbetween{display:flex;justify-content:space-between;align-items:center;gap:12px}.hidden{display:none!important}.tabscontent>section{display:none}.tabscontent>section.active{display:block}.radio-status{display:flex;align-items:center;gap:15px;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:18px}.radio-status strong{font-weight:700}progress{width:100%;height:10px;accent-color:var(--aqua)}pre.log{height:215px;overflow:auto;background:#08111e;border:1px solid #294056;border-radius:10px;padding:14px;white-space:pre-wrap;font-size:12px;color:#b7e3d9;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;line-height:1.5}.check{display:flex;align-items:center;gap:10px;color:#d5e2f4;font-size:13px}.check input{accent-color:var(--aqua);width:17px;height:17px}dialog{border:1px solid #45566e;border-radius:18px;padding:0;box-shadow:0 35px 120px #000a;background:#161f2f;color:var(--fg);width:min(750px,calc(100vw - 24px));max-height:90vh;overflow:auto}dialog::backdrop{background:#010812d9}.modalhead{padding:22px 24px 10px;display:flex;justify-content:space-between;align-items:center}.modalbody{padding:0 24px 24px}.modalfoot{border-top:1px solid var(--border);padding:16px 24px;display:flex;justify-content:flex-end;gap:10px}.hint{font-size:12px;color:#9fb1c7}.col2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.labeltop{font-size:12px;color:#adc7d9;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin:20px 0 8px}.kbd{font-family:monospace;background:#1d3144;padding:2px 6px;border-radius:5px;color:#cce8ff}.footer{color:#7890ac;font-size:12px;margin:36px 0}a{color:#97d5ff}a:hover{color:white}input[type=file]{display:none}@media(max-width:950px){.layout{grid-template-columns:1fr}.side{position:static;height:auto;padding:14px 18px;gap:12px}.nav{display:flex;flex-wrap:wrap}.nav button{padding:9px}.sidefoot{display:none}main{padding:23px 16px}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:580px){.stats{grid-template-columns:1fr}.formgrid,.col2{grid-template-columns:1fr}.side .logo{padding:0}.nav{gap:4px}.nav button{font-size:12px}.panel{padding:15px}.btn{font-size:12px}}
 /* Edición por clic: una única celda a la vez; sin tocar el protocolo de radio. */
 td.cell-edit{cursor:text;position:relative;border-left:1px solid transparent;transition:background .15s}
 td.cell-edit:hover{background:#23485a;border-left-color:#35d7bc;color:#efffff}
@@ -56,8 +87,7 @@ td.cell-edit .inline-field{width:100%;min-width:100px;max-width:210px;background
 
 
 /* BRICOHAMS Studio 2.0 — capa visual (sin modificar las rutinas USB ni Flash). */
-:root{--bg:#0c111a;--panel:#171e2a;--panel2:#1d2936;--border:#334254;--fg:#eef5fb;--muted:#a9bdce;--aqua:#45dec4;--warn:#f8b764;--shadow:0 5px 18px #050c1647}
-html{scroll-behavior:auto}body{background:#0d131e;color:var(--fg)}
+html{scroll-behavior:auto}body{background:var(--bg);color:var(--text)}
 .layout{grid-template-columns:228px minmax(0,1fr)}
 .side{background:linear-gradient(175deg,#151b27,#0c151f 80%);border-right:1px solid #324253;padding:20px 13px 16px;gap:20px;z-index:41}
 .side .logo{align-items:center;text-align:center;gap:8px;padding:0 4px}
@@ -249,6 +279,123 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 .rb-table .rb-safe{color:#9edbd1}
 .rb-added-channel td{background:#153d33}
 .rb-table td input[type=checkbox]:disabled{opacity:.35;cursor:not-allowed}
+</style>
+<style id="brand-theme">
+/* BricoHams colour manual v1.1: final theming layer. Maps every surface to the tokens declared in :root. No remote fonts (works offline). */
+html,body{background:var(--bg);color:var(--text)}
+body{font-family:var(--font-ui)}
+h1,.logotop{font-family:var(--font-display);font-weight:800}
+h2,h3{font-family:var(--font-display);font-weight:700}
+p,label,.check,.hint,.labeltop,.empty,.footer{color:var(--text-muted)}
+.empty strong{color:var(--text)}
+a{color:var(--link);text-decoration:underline}a:hover{color:var(--text)}
+.rb-attribution a{color:var(--link)}
+:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible,td.cell-edit:focus-visible,.rb-drag:focus-visible,select:focus,.field:focus,input:focus-visible{outline:3px solid var(--focus)!important;outline-offset:3px}
+.dot{background:var(--text-muted)}.dot.ok{background:var(--ok)}
+::selection{background:var(--brand-orange);color:var(--on-accent)}
+
+/* Shell */
+.side{background:var(--surface);border-right:1px solid var(--border)}
+.side .logotop{color:var(--text)}
+.side .brandlogo{background:var(--logo-plate-bg);padding:var(--logo-plate-pad);border-radius:10px;box-shadow:none;filter:none}
+.sidefoot{border-top-color:var(--border);color:var(--text-muted)}
+.side .nav button{color:var(--text);background:transparent}
+.side .nav button:hover:not(.active){background:var(--surface-hover)}
+.side .nav button.active{background:var(--accent-soft);border-color:var(--brand-orange);color:var(--text);box-shadow:inset 3px 0 0 var(--brand-orange)}
+.nav-no{background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+.nav button.active .nav-no{background:var(--brand-orange);color:var(--on-accent);border-color:var(--brand-orange)}
+.nav-divider{border-top-color:var(--border)}
+.global-toolbar{background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
+.global-toolbar-state small{color:var(--text-muted)}
+.theme-switch{display:inline-flex;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.theme-switch .btn{border:0;border-radius:0;min-height:37px;background:var(--surface-2)}
+.theme-switch .btn+.btn{border-left:1px solid var(--border)}
+.theme-switch .btn[aria-pressed="true"]{background:var(--brand-orange);color:var(--on-accent);font-weight:800}
+.theme-switch .btn:focus-visible{outline-offset:-3px}
+@media(max-width:680px){.global-toolbar-actions .theme-switch{grid-column:1/-1}.global-toolbar-actions .theme-switch .btn{flex:1}}
+.top{background:var(--surface);border:1px solid var(--border)}
+.top .lead{color:var(--text-muted)}
+.eyebrow{color:var(--link)}
+h1>span{color:var(--text)}
+h1>small{background:var(--brand-orange);color:var(--on-accent)}
+.chip,#uiDetectedVersion{background:var(--surface-2);border-color:var(--border);color:var(--text)}
+.logosub,.small,.muted{color:var(--text-muted)}
+
+/* Cards and panels */
+.panel,.stat,.ui-extra-box,.bk-library,.bk-dfu-launch,#backupQuickPanel,#tab-calibracion .cal-action-card,#tab-calibracion .cal-source,#tab-calibracion details.cal-group,.rb-details,dialog{background:var(--surface);border:1px solid var(--border);color:var(--text)}
+.panel{box-shadow:var(--shadow)}
+.stat{box-shadow:none}
+.ui-extra-box .panel,.bk-library .notice{background:var(--bg)}
+#tab-radio>.panel:first-child,#tab-dfu>.panel:first-child,#tab-multiboot>.panel:first-child{background:transparent;border:0;box-shadow:none}
+#tab-config>.panel:first-child{border-color:var(--border)}
+#usbProPanel,#usbProPanel.pro-enabled{background:var(--surface);border-color:var(--border)}
+#usbProPanel.pro-enabled{border-color:var(--brand-orange)}
+#usbProState.enabled,#usbProToggle.enabled{color:var(--on-accent)}
+#usbProToggle.enabled{background:var(--brand-orange);border-color:var(--brand-orange)}
+#globalProToggle.is-active{background:var(--brand-orange);border-color:var(--brand-orange);color:var(--on-accent)}
+.bk-library h3{color:var(--text)}
+.bk-library-status,.bk-file-note,.bk-field,.bk-field small,.ui-file-help,#tab-calibracion .cal-count{color:var(--text-muted)}
+.bk-field{color:var(--text)}
+#tab-calibracion .cal-source-caption{color:var(--link)}
+.ui-extra-box>summary:after{color:var(--link)}
+.ui-extra-box[open]>summary{border-bottom-color:var(--border)}
+#tab-memorias .ui-channel-actions{border-top-color:var(--border)}
+.rb-details>summary:hover{background:var(--surface-hover)}
+dialog{box-shadow:var(--shadow)}dialog::backdrop{background:var(--backdrop)}
+.modalfoot,.radio-status{border-color:var(--border)}
+
+/* Buttons: primary is orange with graphite text in both themes (never white on orange) */
+.btn{background:var(--surface-2);border:1px solid var(--border-strong);color:var(--text)}
+.btn:hover:not(:disabled){background:var(--surface-hover)}
+.btn.ghost{background:transparent}
+.btn.primary,.btn.primary:hover:not(:disabled){background:var(--brand-orange);border-color:var(--brand-orange);color:var(--on-accent);font-weight:800}
+.btn.primary:hover:not(:disabled){box-shadow:inset 0 0 0 2px var(--on-accent)}
+.btn.danger{background:var(--err-bg);border-color:var(--err);color:var(--err)}
+.bk-flash-table .bk-erase-slot{background:var(--err-bg);border-color:var(--err);color:var(--err)}
+.bk-flash-table .bk-erase-slot:not(:disabled):hover{background:var(--surface-hover)}
+.rb-drag{border-color:var(--border-strong)!important;background:var(--surface-2)!important;color:var(--text)!important}
+.rb-drag:hover{background:var(--surface-hover)!important;border-color:var(--brand-orange)!important}
+.bk-field input[type=file]::file-selector-button{background:var(--surface-2);border:1px solid var(--border-strong);color:var(--text)}
+
+/* Form controls */
+.field,select,.bk-field input,.bk-field select,td.cell-edit .inline-field{background:var(--bg);color:var(--text);border:1px solid var(--border-strong)}
+.bk-source-select{color:var(--text)}
+input,select{accent-color:var(--brand-orange)}
+progress,.check input,.rb-checks input,.rb-confirm input,.rb-table input{accent-color:var(--brand-orange)}
+pre.log{background:var(--bg);border:1px solid var(--border);color:var(--text)}
+.kbd{background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+
+/* Tables */
+.tablewrap,.rb-tablewrap{border-color:var(--border)}
+thead,#tab-memorias thead,#tab-calibracion th,.rb-table th{background:var(--surface-2)}
+th,#tab-memorias th,.bk-flash-table th,#tab-calibracion th,.rb-table th{color:var(--text)}
+th,td,.bk-flash-table td,.bk-flash-table th,#tab-calibracion td,#tab-calibracion th,.rb-table td,.rb-table th{border-bottom-color:var(--border)}
+td,.bk-flash-table td{color:var(--text)}
+tbody tr:hover,.rb-table tbody tr:hover{background:var(--surface-hover)}
+td.freq{color:var(--text)}
+td.off{color:var(--err)}
+td.cell-edit:hover{background:var(--accent-soft);border-left-color:var(--brand-orange);color:var(--text)}
+td.cell-edit.editing{background:var(--accent-soft)}
+#tableBody .tone-off{color:var(--ok)}
+#tab-memorias .tablewrap::-webkit-scrollbar-thumb{background:var(--border-strong)}
+.rb-drop-target td{outline:3px solid var(--brand-orange);background:var(--accent-soft)}
+.rb-added-channel td{background:var(--ok-bg)}
+.rb-table .rb-unknown{color:var(--warn)}
+.rb-table .rb-safe{color:var(--ok)}
+#tab-calibracion td.cal-changed{color:var(--warn)}
+#tab-calibracion tr.cal-diff{background:var(--warn-bg)}
+.bk-flash-table .bkState[data-state="empty"]{color:var(--text-muted)}
+.bk-flash-table .bkState[data-state="valid"]{color:var(--ok)}
+
+/* Badges, notices and status (functional colours, AA in both themes) */
+.badge{background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+.badge.rx{background:var(--err-bg);color:var(--err);border-color:var(--err)}
+.notice,.note{background:var(--warn-bg);border:1px solid var(--warn);color:var(--text)}
+.notice.info,#tab-memorias .notice.info{background:var(--surface-2);border-color:var(--border-strong);color:var(--text)}
+.notice.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--text)}
+.bk-flash-readiness{color:var(--warn)}.bk-flash-readiness[data-ready="yes"]{color:var(--ok)}
+#uiChannelsPending{background:var(--surface-2);border:1px solid var(--border-strong);color:var(--text)}
+#uiChannelsPending.pending{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
 </style></head>
 <body>
 <div class="layout">
@@ -272,10 +419,24 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 <div class="global-toolbar-state"><strong id="globalConnLabel">Sin conexión</strong><small id="globalConnDetail">Conecta el walkie para leer su configuración y canales.</small></div>
 </div>
 <div class="global-toolbar-actions">
+<div aria-label="Tema de color" class="theme-switch" id="themeSwitch" role="group">
+<button aria-pressed="false" class="btn sm" data-theme-choice="light" type="button">☀ Claro</button>
+<button aria-pressed="false" class="btn sm" data-theme-choice="dark" type="button">☾ Oscuro</button>
+<button aria-pressed="true" class="btn sm" data-theme-choice="system" type="button">◐ Sistema</button>
+</div>
 <button aria-pressed="false" class="btn" id="globalProToggle" title="Modo PRO: escritura de canales y configuración sin confirmaciones repetidas" type="button">⚡ Modo PRO: OFF</button>
 <button class="btn primary" id="globalConnectToggle" title="Conectar o desconectar el walkie" type="button">⌁ Conectar</button>
 </div>
 </div>
+<script>
+/* Theme switch light / dark / system; the choice is stored in localStorage and mirrored on <html data-theme>. */
+(function(){var KEY='bricohams-theme',root=document.documentElement,box=document.getElementById('themeSwitch');if(!box)return;
+function current(){var t=root.getAttribute('data-theme');return t==='light'||t==='dark'?t:'system';}
+function paint(){var c=current();box.querySelectorAll('[data-theme-choice]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-theme-choice')===c));});}
+function apply(c){if(c==='system'){root.removeAttribute('data-theme');}else{root.setAttribute('data-theme',c);}try{if(c==='system'){localStorage.removeItem(KEY);}else{localStorage.setItem(KEY,c);}}catch(e){}paint();}
+box.addEventListener('click',function(ev){var b=ev.target.closest('[data-theme-choice]');if(b)apply(b.getAttribute('data-theme-choice'));});
+paint();})();
+</script>
 <header class="top"><div><div class="eyebrow">RADIOAFICIÓN · HAZLO TÚ MISMO</div><h1>BRICOHAMS <span>QUANSHENG STUDIO</span> <small>2.10</small></h1><p class="lead">Tu centro de control para F4HWN Fusion 6.0 y 6.1: copias, firmware, multiboot, ajustes y canales.</p></div><div class="ui-pills"><span class="chip">● Local / GitHub Pages</span><span class="chip" id="uiDetectedVersion">Radio: sin detectar</span></div></header>
 <div class="stats"><div class="stat"><div class="small">CANALES EN TABLA</div><strong id="statRows">0</strong><span class="small">1024 posiciones disponibles</span></div><div class="stat"><div class="small">PERFIL CSV</div><strong id="statFirmware" style="font-size:17px;letter-spacing:0">Fusion 6.1.0</strong><span class="small" id="statFirmwareSub">Requiere CHIRP y controlador específico</span></div></div>
 <div class="tabscontent">
@@ -304,7 +465,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 </div>
 <p class="small" id="backupQuickStatus">Conecta y lee el walkie para habilitar las copias. Con firmware original 7.00.x utiliza el panel de fábrica de abajo.</p>
 </div>
-<div class="panel" id="backupFabricaPanel" style="display:none;border-color:#46627c">
+<div class="panel" id="backupFabricaPanel" style="display:none;border-color:var(--border-strong)">
 <div class="rowbetween" style="gap:8px;flex-wrap:wrap"><div><h2>UV-K5 V3 · Firmware original de fábrica</h2><p class="small">Modo de respaldo RAW, de solo lectura. No modifica canales, calibración ni firmware. Este modo no es compatible con la edición de ajustes Fusion.</p></div><span class="badge">OEM 7.00.x · SOLO LECTURA</span></div>
 <div class="notice info"><b>Respaldo OEM (solo lectura):</b> la calibración de fábrica ocupa normalmente <code>0x1E00–0x1FFF</code> (512 bytes); F4HWN emplea otra dirección (<code>0xB000</code>). La copia RAW guarda la ventana <code>0x0000–0x1FFF</code> (8 KiB). <b>No es un volcado de toda la memoria Flash física de 2 MiB</b>, ni una garantía de compatibilidad con EEPROM ampliadas. Compara la calibración con tu archivo original de K5prog antes de darla por validada.</div>
 <div class="flex" style="margin:12px 0">
@@ -344,8 +505,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 <div class="flex" style="margin-top:15px"><button class="btn primary" id="btnExportTransfer">↓ Descargar CSV para CHIRP</button><button class="btn" id="btnPreset2">◫ Cargar mis 42 canales</button></div>
 </div>
 <div class="panel"><h2>Cómo subir los canales con el controlador correcto</h2>
-<ol style="line-height:2;color:#c5d5ea">
-<li>En CHIRP, carga el controlador oficial <b id="selectedDriver">F4HWN 6.1.0</b> que acompaña a esa versión del firmware.</li>
+<ol style="line-height:2;color:var(--text)"><li>En CHIRP, carga el controlador oficial <b id="selectedDriver">F4HWN 6.1.0</b> que acompaña a esa versión del firmware.</li>
 <li>Conecta por USB-C de datos o cable de programación doble jack. Con la radio encendida normalmente, realiza <b>Radio → Download From Radio</b>.</li>
 <li>Guarda la <b>imagen original</b> de la radio como copia de seguridad.</li>
 <li>En este HTML puedes usar <b>Leer radio y guardar copia completa</b>, después <b>Subir canales</b> con confirmación explícita. Alternativamente, exporta el CSV y ábrelo en CHIRP para transferirlo con su controlador correspondiente.</li>
@@ -375,7 +535,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 <div aria-live="polite" class="bk-flash-readiness" id="bkMainReadyStatus" role="status">Para activar el botón: selecciona un archivo BIN, elige el modelo y marca la confirmación.</div>
 </div>
 <div class="bk-actions"><button class="btn" id="bkReleaseUsb" type="button">🔌 Liberar puerto normal</button><button class="btn" id="bkProbeDfu" type="button">🔎 Detectar DFU (sin flashear)</button><a class="btn" href="https://armel.github.io/uvstudio/#flash" rel="noopener noreferrer" target="_blank">Abrir UV Studio oficial ↗</a></div><p aria-live="polite" class="small" id="bkDfuDiag">Elige un BIN, confirma el modelo y pulsa «Grabar firmware principal (DFU)». Si lo prefieres, comprueba primero el bootloader con «Detectar DFU».</p>
-<div class="note" style="border-color:#765c39">⚠ El flasheo del firmware principal puede dejar la emisora sin arrancar si el BIN es incorrecto. El programa comprueba el bootloader antes de enviar páginas, pero todavía no se ha probado con un equipo real. Si tienes dudas, utiliza UV Studio oficial.</div>
+<div class="note" style="border-color:var(--warn)">⚠ El flasheo del firmware principal puede dejar la emisora sin arrancar si el BIN es incorrecto. El programa comprueba el bootloader antes de enviar páginas, pero todavía no se ha probado con un equipo real. Si tienes dudas, utiliza UV Studio oficial.</div>
 </div>
 <div class="panel"><h2>Registro de operaciones Flash</h2><progress id="bkFlashProgress" max="100" value="0"></progress><p class="small" id="bkFlashStatus">Sin iniciar</p><pre class="log" id="bkFlashLog" style="height:180px">BRICOHAMS · Flash listo. Las escrituras requieren confirmación expresa.
 </pre></div></section>
@@ -487,7 +647,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 </details>
 </div>
 <div class="toolbar flex"><input aria-label="Buscar" class="field search" id="search" placeholder="Buscar nombre, frecuencia o posición…"/><select aria-label="Filtrar" id="filter"><option value="all">Todos los canales</option><option value="same">Misma TX (simplex)</option><option value="split">TX distinta (repetidor)</option><option value="locked">TX bloqueada</option></select><button class="btn" id="btnExport">↓ Exportar CSV para CHIRP</button></div>
-<div class="small" id="rbDragHelp" style="margin:8px 0 10px;color:#b7d1df">Para cambiar el orden, agarra <b>⠿ Arrastrar</b> con el ratón y suelta el canal en la posición deseada. Deja la búsqueda vacía y el filtro en <b>Todos los canales</b>.</div><div class="tablewrap"><table><thead><tr><th>Mover</th><th>Nº</th><th>Nombre</th><th>Recepción (MHz)</th><th>Transmisión (MHz)</th><th>Modo</th><th>Tono TX</th><th>Apertura RX (tono)</th><th>Potencia</th><th>Escaneo</th><th>Acciones</th></tr></thead><tbody id="tableBody"></tbody></table></div><div class="rowbetween" style="padding-top:14px"><span class="small" id="filterCount">0 canales</span><span class="small">Modo, RX y tonos: clic para editar. SQL ruido 0–9: ajuste global. Los canales eliminados se marcan para borrado al escribir, si ya estaban en la radio.</span></div>
+<div class="small" id="rbDragHelp" style="margin:8px 0 10px;color:var(--text-muted)">Para cambiar el orden, agarra <b>⠿ Arrastrar</b> con el ratón y suelta el canal en la posición deseada. Deja la búsqueda vacía y el filtro en <b>Todos los canales</b>.</div><div class="tablewrap"><table><thead><tr><th>Mover</th><th>Nº</th><th>Nombre</th><th>Recepción (MHz)</th><th>Transmisión (MHz)</th><th>Modo</th><th>Tono TX</th><th>Apertura RX (tono)</th><th>Potencia</th><th>Escaneo</th><th>Acciones</th></tr></thead><tbody id="tableBody"></tbody></table></div><div class="rowbetween" style="padding-top:14px"><span class="small" id="filterCount">0 canales</span><span class="small">Modo, RX y tonos: clic para editar. SQL ruido 0–9: ajuste global. Los canales eliminados se marcan para borrado al escribir, si ya estaban en la radio.</span></div>
 </div><div class="notice info">Al conectar desde la <b>barra superior</b>, se leen automáticamente los canales del walkie y aparecen aquí. Pulsa <b>Descargar canales del walkie</b> para actualizarlos en cualquier momento sin salir de esta pantalla. <b>Pulsa en nombre, frecuencia, modo, tono o potencia para editar directamente.</b> TX vacía significa misma frecuencia de RX (simplex). Si el walkie tiene un canal con TX bloqueada, seguirá bloqueado hasta que lo cambies expresamente. En satélites revisa frecuencia y permisos de transmisión; quitar el tono RX no desactiva el silenciador general. <b>Importante:</b> «Sin tono RX» no desactiva el silenciador de ruido: el SQL 0–9 es <b>global</b> para todo el equipo y se cambia en Configuración. Los cambios se graban en el walkie solamente al pulsar <b>Subir canales</b>, ahora también disponible en esta pestaña.</div></section>
 <section aria-labelledby="calTitle" id="tab-calibracion">
 <div class="panel cal-intro">
@@ -516,7 +676,7 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #ff
 <div class="tablewrap cal-byte-wrap"><table class="cal-byte-table"><thead><tr><th>Offset</th><th>Actual (BIN)</th><th>Walkie</th><th>Descripción</th></tr></thead><tbody id="calByteRows"><tr><td colspan="4">Lee el walkie y carga un backup para ver las diferencias.</td></tr></tbody></table></div>
 </div>
 </section>
-<section id="tab-ayuda"><div class="panel"><h2>Guía rápida · Fusion 6</h2><ol style="line-height:2;color:#c5d5ea"><li>Abre este archivo HTML con Chrome o Edge, sin Internet.</li><li>Pulsa <b>Cargar mis 42 canales</b> o usa <b>Importar CSV</b> para abrir cualquier lista.</li><li>Revisa frecuencias, tonos CTCSS, coincidencia TX/RX, bloqueos de transmisión y nombres.</li><li>En <b>0 · Backup</b>, pulsa <b>Conectar, detectar y leer</b>: los canales aparecerán automáticamente en <b>Canales</b>. El respaldo BIN es opcional; la escritura de configuración requiere lectura previa y confirmación. Abre <b>Configuración</b> para cambiar los ajustes y guardar los cambios; o <b>Subir canales</b> cuando estés seguro. El proceso experimental graba y verifica bloques modificados.</li><li>Usa CHIRP con su <b>controlador de la misma versión</b>, descarga la imagen de tu radio, haz un respaldo y copia las filas del CSV abierto hacia esa imagen.</li></ol></div>
+<section id="tab-ayuda"><div class="panel"><h2>Guía rápida · Fusion 6</h2><ol style="line-height:2;color:var(--text)"><li>Abre este archivo HTML con Chrome o Edge, sin Internet.</li><li>Pulsa <b>Cargar mis 42 canales</b> o usa <b>Importar CSV</b> para abrir cualquier lista.</li><li>Revisa frecuencias, tonos CTCSS, coincidencia TX/RX, bloqueos de transmisión y nombres.</li><li>En <b>0 · Backup</b>, pulsa <b>Conectar, detectar y leer</b>: los canales aparecerán automáticamente en <b>Canales</b>. El respaldo BIN es opcional; la escritura de configuración requiere lectura previa y confirmación. Abre <b>Configuración</b> para cambiar los ajustes y guardar los cambios; o <b>Subir canales</b> cuando estés seguro. El proceso experimental graba y verifica bloques modificados.</li><li>Usa CHIRP con su <b>controlador de la misma versión</b>, descarga la imagen de tu radio, haz un respaldo y copia las filas del CSV abierto hacia esa imagen.</li></ol></div>
 <div class="panel"><h2>Alcance y limitaciones</h2><p>Editor no oficial, independiente de Rigstudio y F4HWN. Incluye importación automática (incluido tu CSV Murcia), edición básica, nombres, RX, TX simplex y bloqueo independiente, FM/NFM/AM, CTCSS, exportación CSV tipo CHIRP y copia JSON. No es un controlador CHIRP. La pestaña Configuración incluye ajustes básicos, botones, escaneo, radio FM y DTMF documentados en los controladores oficiales. Las copias incluyen calibración (solo respaldo, sin escritura) y texto del logo de arranque. Las funciones de bloqueo peligroso quedan excluidas de la escritura.</p>
 <p><b>USB de clonación experimental:</b> protocolo de consulta, lectura completa, escritura de bloques 0x80, respuesta ACK y verificación por relectura, adaptado de los controladores CHIRP oficiales F4HWN Fusion 6.0/6.1 suministrados. No escribe calibración; los ajustes se escriben separadamente en la pestaña Configuración. Ninguna función USB está probada con un aparato real; para una ruta contrastada utiliza CHIRP.</p><p>Fuente técnica: controladores CHIRP F4HWN v6.0.0 y v6.1.0 aportados por el usuario, basados en el trabajo de Jacek Lipkowski, EGZUMER, JOC2 y F4HWN. Implementación derivada GPL v2 o posterior; este HTML incluye el código fuente JavaScript. <a href="https://github.com/armel/uv-k1-k5v3-firmware-custom" rel="noopener" target="_blank">Proyecto F4HWN</a>. CHIRP y F4HWN son proyectos de sus respectivos autores. La transmisión exige frecuencias y permisos adecuados.</p></div></section>
 </div>
@@ -1589,7 +1749,7 @@ function cfgLoadFromSnapshot(){
   if(!diag){diag=document.createElement('div');diag.id='bkConfigRawDiagnostics';diag.className='notice info';const root=$('#cfgGroups');root.parentNode.insertBefore(diag,root);}
   diag.textContent=report;
   log(report);
-  if(erased>=6){diag.textContent+=' | ATENCIÓN: posible banco vacío o lectura del banco incorrecto. No escribas estos ajustes.';diag.style.borderColor='#e3ae63';}
+  if(erased>=6){diag.textContent+=' | ATENCIÓN: posible banco vacío o lectura del banco incorrecto. No escribas estos ajustes.';diag.style.borderColor='var(--warn)';}
  }
 
  cfgInitial={};const sections=new Map();
