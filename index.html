@@ -732,13 +732,14 @@ function render(){let r=listRows();$('#statRows').textContent=rows.size;
  let body=$('#tableBody');body.replaceChildren();if(!r.length){body.innerHTML='<tr><td colspan="11"><div class="empty"><strong>No hay canales que mostrar</strong>Importa tu CSV, carga el ejemplo Murcia o añade un canal.</div></td></tr>'}else for(let ch of r){
   let tr=document.createElement('tr');
   const click=(field,content,extra='')=>`<td class="cell-edit ${extra}" data-id="${ch.id}" data-field="${field}" tabindex="0" title="Clic para editar ${field}">${content}<span class="edit-pencil" aria-hidden="true">✎</span></td>`;
-  tr.innerHTML=`<td>${ch.id}</td>${click('name','<b>'+escapeHtml(ch.name||'SIN NOMBRE')+'</b>')}${click('rx',fmhz(ch.rx),'freq')}${click('tx',isTxLocked(ch)?badge('TX bloqueada','rx'):sameTx(ch)?badge('Misma TX','same'):fmhz(ch.tx),isTxLocked(ch)?'off':sameTx(ch)?'same':'freq')}${click('mode',badge(escapeHtml(ch.mode)))}${click('toneTx',ch.toneTx==null?'—':Number(ch.toneTx).toFixed(1))}${click('toneRx',ch.toneRx==null?'<span class="tone-off">Sin tono</span>':'CTCSS '+Number(ch.toneRx).toFixed(1))}${click('power',escapeHtml(POWER[ch.power]||'USER'))}${click('scan',ch.scan?(ch.list?'Lista '+ch.list:'Sí'):'No')}<td><button class="btn sm edit" data-id="${ch.id}">Editar todo</button> <button class="btn sm" type="button" data-copy-id="${ch.id}" title="Copiar este canal en la primera posición libre">⧉ Copiar</button></td>`;
+  tr.innerHTML=`<td>${ch.id}</td>${click('name','<b>'+escapeHtml(ch.name||'SIN NOMBRE')+'</b>')}${click('rx',fmhz(ch.rx),'freq')}${click('tx',isTxLocked(ch)?badge('TX bloqueada','rx'):sameTx(ch)?badge('Misma TX','same'):fmhz(ch.tx),isTxLocked(ch)?'off':sameTx(ch)?'same':'freq')}${click('mode',badge(escapeHtml(ch.mode)))}${click('toneTx',ch.toneTx==null?'—':Number(ch.toneTx).toFixed(1))}${click('toneRx',ch.toneRx==null?'<span class="tone-off">Sin tono</span>':'CTCSS '+Number(ch.toneRx).toFixed(1))}${click('power',escapeHtml(POWER[ch.power]||'USER'))}${click('scan',ch.scan?(ch.list?'Lista '+ch.list:'Sí'):'No')}<td><button class="btn sm edit" data-id="${ch.id}">Editar todo</button> <button class="btn sm" type="button" data-copy-id="${ch.id}" title="Copiar este canal en la primera posición libre">⧉ Copiar</button> <button class="btn sm danger" type="button" data-delete-id="${ch.id}" aria-label="Eliminar canal ${ch.id}" title="Eliminar este canal de la tabla; se aplicará al walkie al subir los cambios"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h18M9 6V4h6v2M5 6l1 14h12l1-14M10 10v6M14 10v6"/></svg></button></td>`;
   tr.dataset.channelId=String(ch.id);
   tr.insertAdjacentHTML('afterbegin',`<td class="rb-order-cell"><button type="button" class="btn sm rb-drag" draggable="true" data-move-handle="${ch.id}" aria-label="Arrastrar canal ${ch.id} con el ratón" title="Mantén pulsado y arrastra para cambiar la posición">⠿ Arrastrar</button></td>`);
   body.append(tr)
  }
  body.querySelectorAll('button[data-id]').forEach(b=>b.onclick=()=>openEditor(Number(b.dataset.id)));
  body.querySelectorAll('button[data-copy-id]').forEach(b=>b.onclick=()=>copyChannel(Number(b.dataset.copyId)));
+ body.querySelectorAll('button[data-delete-id]').forEach(b=>b.onclick=()=>deleteChannel(Number(b.dataset.deleteId)));
  $('#selectedDriver').textContent='F4HWN '+$('#profile').value;
  if(typeof usbRender==='function')usbRender();
 }
@@ -786,7 +787,16 @@ $('#btnSubirCanalesTabla').onclick=()=>$('#usbWriteDisabled').click();
 $('#btnAdd').onclick=()=>openEditor();$('#closeModal').onclick=$('#cancelBtn').onclick=()=>$('#editor').close();$('#editor').addEventListener('click',e=>{if(e.target===$('#editor'))$('#editor').close()});
 function validRow(x){x.txLocked=!!x.txLocked;if(!Number.isInteger(x.id)||x.id<1||x.id>NUM_RADIO_CHANNELS)throw Error('Posición fuera de 1–1024');if(!Number.isFinite(x.rx)||x.rx<18||x.rx>1300)throw Error('RX no válida');if(x.tx!=null&&(!Number.isFinite(x.tx)||x.tx<18||x.tx>1300))throw Error('TX no válida');if(!CHANNEL_MODES.includes(x.mode))throw Error('Modo no reconocido');for(let k of ['toneTx','toneRx'])if(x[k]!=null&&!CTCSS.some(t=>Math.abs(t-x[k])<.02))throw Error('Tono '+k+' no válido');if(x.name.length>10)throw Error('Nombre: máximo 10 caracteres');if(!/^[\x20-\x7e]*$/.test(x.name))throw Error('El nombre debe usar caracteres ASCII');return x}
 $('#editForm').onsubmit=e=>{e.preventDefault();try{let f=e.target.elements;let row=validRow({id:Number(f.id.value),name:f.name.value.trim().toUpperCase(),rx:Number(f.rx.value),tx:f.tx.value===''?null:Number(f.tx.value),txLocked:f.txLocked.value==='true',mode:f.mode.value,power:Number(f.power.value),toneTx:f.toneTx.value===''?null:Number(f.toneTx.value),toneRx:f.toneRx.value===''?null:Number(f.toneRx.value),scan:f.scan.value==='true',list:f.scan.value==='true'?(rows.get(editOldId)?.list??null):null,comment:f.comment.value.trim()});if(row.id!==editOldId&&rows.has(row.id))throw Error('Ya existe otro canal en la posición '+row.id);if(editOldId!=null&&editOldId!==row.id){rows.delete(editOldId);if(radioRows.has(editOldId))deleted.add(editOldId)}rows.set(row.id,row);deleted.delete(row.id);$('#editor').close();render()}catch(err){notify(err.message)}};
-$('#deleteBtn').onclick=()=>{if(editOldId==null)return;if(!confirm(`¿Eliminar el canal ${editOldId} de esta tabla local?`))return;rows.delete(editOldId);if(radioRows.has(editOldId))deleted.add(editOldId);$('#editor').close();render()};
+function deleteChannel(id){
+ const ch=rows.get(id);if(!ch)return false;
+ if(!confirm('¿Eliminar el canal '+id+' ('+(ch.name||'SIN NOMBRE')+') de la tabla? El borrado se aplicará al walkie cuando pulses «Subir canales».'))return false;
+ rows.delete(id);if(radioRows.has(id))deleted.add(id);else deleted.delete(id);
+ render();
+ const message='Canal '+id+' eliminado de la tabla. El borrado se aplicará al walkie al pulsar «Subir canales».';
+ $('#channelsReadFromRadioStatus').textContent=message;log(message);
+ return true;
+}
+$('#deleteBtn').onclick=()=>{if(editOldId!=null&&deleteChannel(editOldId))$('#editor').close()};
 function saveBlob(data,name,type){let blob=data instanceof Blob?data:new Blob([data],{type});let url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
 function csvCell(v){let s=String(v??'');if(/^[=+@]/.test(s))s="'"+s;return /[",;\r\n]/.test(s)?'"'+s.replaceAll('"','""')+'"':s}
 function makeCSV(grid){return '\ufeff'+grid.map(line=>line.map(csvCell).join(',')).join('\r\n')+'\r\n'}
