@@ -99,6 +99,9 @@ Fuentes:
 
 ## 📻 Notas de configuración
 
+> [!TIP]
+> **Manual F4HWN (FH4) Bricohams:** referencia de los 68 menús de la radio, bloqueo, retroiluminación y hoja rápida imprimible. Consulta [`docs/MANUAL-F4HWN.md`](docs/MANUAL-F4HWN.md), la [guía web](https://brico-hams.github.io/Radio-Web-install/ayuda-manual-f4hwn.html) o el [PDF completo](https://brico-hams.github.io/Radio-Web-install/docs/manuals/Manual_F4HWN_FH4_Bricohams_v2.pdf).
+
 - **ChDisp → NAME**: muestra el nombre de memoria en lugar de la frecuencia cuando el walkie está en modo memoria (MR).
 - **Misma TX**: transmisión y recepción en la misma frecuencia. **TX bloqueada** es una situación distinta y se respeta cuando está almacenada así.
 - Los modos seleccionables por canal incluyen **FM, NFM, AM, NAM y USB**. No se presenta LSB como opción soportada por los controladores revisados.
@@ -120,6 +123,9 @@ Fuentes:
 .
 ├── index.html                 # Aplicación web autónoma
 ├── README.md                  # Documentación del proyecto
+├── docs/
+│   ├── BRANDING.md            # Guía de colores BricoHams
+│   └── MANUAL-F4HWN.md        # Referencias al manual F4HWN (FH4)
 └── assets/
     └── logo-bricohams.png    # Imagen para este README
 ```
